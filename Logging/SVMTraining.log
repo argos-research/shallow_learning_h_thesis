@@ -1,0 +1,71 @@
+15-Nov-19 00:28:27) [SVM.py: __init__ - 154] - 
+
+
+
+
+15-Nov-19 00:28:27) [SVM.py: __init__ - 155] - 
+
+
+
+
+15-Nov-19 00:28:27) [SVM.py: __init__ - 156] - =============== Initialize the SVM_class variable ==================
+15-Nov-19 00:28:27) [SVM.py: __init__ - 157] - ===== Working on following data set: ======
+15-Nov-19 00:28:27) [SVM.py: __init__ - 158] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:28:27) [SVM.py: __init__ - 160] -  CurrentDate: 2019-11-15 00-28-27
+15-Nov-19 00:28:27) [SVM.py: __init__ - 161] - 
+
+
+
+
+15-Nov-19 00:28:27) [SVM.py: __init__ - 181] - Initialization Done
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 332] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 339] - 
+
+
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 341] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 342] - --------------------------------------------------
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 343] -     Search iteration: 1
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 344] -     CurrentDate: 2019-11-15 00-28-27
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 345] - --------------------------------------------------
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 346] - 
+
+
+15-Nov-19 00:28:27) [SVM.py: hyperparameter_optimization_search - 349] - {'kernel': ['linear'], 'degree': [1], 'C': [0.25]}
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 382] - -----------------All_iterated_models----------------
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 393] - (' mean_score:0.45', ' std_score:0.06772738753623156', " params:{'kernel': 'linear', 'degree': 1, 'C': 0.25}")
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 397] - ----------------Best_Model----------------
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 433] - accuracy_score:32.5,kernel:linear,C:0.25,degree:1,gamma:auto_deprecated,coef0:0.0,tol:0.001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.555316925048828
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 449] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 450] - Precision:[0.45       0.33333333 1.        ],   Recall:[1.  0.5 0. ],   Thresholds:[0 1]
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 485] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 492] - [0.45]
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 493] - [0.06772739]
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 499] - Mean:0.45 std:0.13545477507246312 params:{'kernel': 'linear', 'degree': 1, 'C': 0.25}
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 508] -  
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 509] - Detailed classification report:
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 510] - The model is trained on the full development set.
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 511] - The scores are computed on the full evaluation set.
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 512] -  
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 516] -               precision    recall  f1-score   support
+
+           0       0.31      0.18      0.23        22
+           1       0.33      0.50      0.40        18
+
+    accuracy                           0.33        40
+   macro avg       0.32      0.34      0.31        40
+weighted avg       0.32      0.33      0.31        40
+
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 519] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:28:30) [SVM.py: calculate_score_and_report - 522] - [[ 4 18]
+ [ 9  9]]
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 459] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 460] - {'kernel': 'linear', 'degree': 1, 'C': 0.25}
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 465] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 466] - SVC(C=0.25, cache_size=200, class_weight=None, coef0=0.0,
+    decision_function_shape='ovr', degree=1, gamma='auto_deprecated',
+    kernel='linear', max_iter=-1, probability=False, random_state=None,
+    shrinking=True, tol=0.001, verbose=False)
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 472] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:28:30) [SVM.py: process_trained_model_information - 473] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_C', 'param_degree', 'param_kernel', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:28:30) [SVM.py: hyperparameter_optimization_search - 372] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:28:30) [SVM.py: calculate_accuracy_score - 304] - Single Accuracy score of model: 0.325

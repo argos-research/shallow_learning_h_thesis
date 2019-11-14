@@ -1,0 +1,2 @@
+accuracy_score:17.5,n_estimators:100,criterion:gini,max_depth:25,max_features:auto,bootstrap:True,min_samples_leaf:5,min_samples_split:8,dataset_name_path:Datasets/TestDataset/feature_data.csv,running_time:7.603507995605469,CurrentDate:2019-11-15 00-08
+accuracy_score:12.5,n_estimators:100,criterion:gini,max_depth:25,max_features:auto,bootstrap:True,min_samples_leaf:5,min_samples_split:8,dataset_name_path:Datasets/TestDataset/feature_data.csv,running_time:6.656576633453369,CurrentDate:2019-11-15 00-09

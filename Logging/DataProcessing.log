@@ -1,0 +1,20 @@
+14-Nov-19 23:51:32 [Dataset_Processing.py: <module> - 606] - ==============================================================================
+14-Nov-19 23:51:32 [Dataset_Processing.py: <module> - 607] - ==============================================================================
+14-Nov-19 23:51:32 [Dataset_Processing.py: <module> - 608] - ------------------------------main start--------------------------------------
+14-Nov-19 23:51:32 [Dataset_Processing.py: <module> - 609] - ==============================================================================
+14-Nov-19 23:51:32 [Dataset_Processing.py: <module> - 610] - ==============================================================================
+14-Nov-19 23:52:00 [Dataset_Processing.py: create_db_connection - 395] - db connection created Successful
+14-Nov-19 23:52:21 [Dataset_Processing.py: read_all_jobs - 418] - Jobs Table read successfully
+14-Nov-19 23:52:36 [Dataset_Processing.py: read_all_tasks - 441] - Tasks Table read successfully
+14-Nov-19 23:52:43 [Dataset_Processing.py: read_all_tasksets - 459] - Tasksets Table read successfully
+14-Nov-19 23:52:43 [Dataset_Processing.py: read_all_data - 483] - read_all_data function read successful
+14-Nov-19 23:52:43 [Dataset_Processing.py: read_all_data - 488] - return Taskset with all values
+14-Nov-19 23:52:43 [Dataset_Processing.py: close_db_connection - 405] - db connection closed Successful
+14-Nov-19 23:52:43 [Dataset_Processing.py: process_db_file - 531] - Load_data
+14-Nov-19 23:52:43 [Dataset_Processing.py: process_db_file - 532] - reading pickle data
+14-Nov-19 23:52:46 [Dataset_Processing.py: save_feature_label_set - 575] - Save data- as csv/pkl format
+14-Nov-19 23:53:13 [Dataset_Processing.py: <module> - 606] - ==============================================================================
+14-Nov-19 23:53:13 [Dataset_Processing.py: <module> - 607] - ==============================================================================
+14-Nov-19 23:53:13 [Dataset_Processing.py: <module> - 608] - ------------------------------main start--------------------------------------
+14-Nov-19 23:53:13 [Dataset_Processing.py: <module> - 609] - ==============================================================================
+14-Nov-19 23:53:13 [Dataset_Processing.py: <module> - 610] - ==============================================================================

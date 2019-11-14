@@ -1,0 +1,1 @@
+accuracy_score:22.5,splitter:best,criterion:gini,max_depth:16,max_features:10,min_samples_leaf:3,min_samples_split:50,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.453455686569214,CurrentDate:2019-11-15 00-21

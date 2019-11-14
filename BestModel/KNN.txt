@@ -1,0 +1,1 @@
+accuracy_score:12.5,n_neighbors:25,weights:distance,algorithm:kd_tree,p:3,leaf_size:30,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.863288164138794,CurrentDate:2019-11-15 00-23

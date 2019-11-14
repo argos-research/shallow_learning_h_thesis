@@ -1,0 +1,2 @@
+accuracy_score:42.5,penalty:l2,dual:True,solver:liblinear,C:100,multi_class:ovr,max_iter:110,tol:0.0001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:1.4634931087493896,CurrentDate:2019-11-15 00-25
+accuracy_score:47.5,penalty:l2,dual:True,solver:liblinear,C:100,multi_class:ovr,max_iter:110,tol:0.0001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.5257182121276855,CurrentDate:2019-11-15 00-26

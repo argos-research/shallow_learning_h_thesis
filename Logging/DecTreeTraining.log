@@ -1,0 +1,72 @@
+15-Nov-19 00:21:42) [DecTree.py: __init__ - 123] - 
+
+
+
+
+15-Nov-19 00:21:42) [DecTree.py: __init__ - 124] - 
+
+
+
+
+15-Nov-19 00:21:42) [DecTree.py: __init__ - 125] - =============== Initialize the DecTree_class variable ==================
+15-Nov-19 00:21:42) [DecTree.py: __init__ - 126] - ===== Working on following data set: ======
+15-Nov-19 00:21:42) [DecTree.py: __init__ - 127] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:21:42) [DecTree.py: __init__ - 129] -  CurrentDate: 2019-11-15 00-21-42
+15-Nov-19 00:21:42) [DecTree.py: __init__ - 130] - 
+
+
+
+
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 276] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 283] - 
+
+
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 285] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 286] - --------------------------------------------------
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 287] -     Search iteration: 1
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 288] -     CurrentDate: 2019-11-15 00-21-42
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 289] - --------------------------------------------------
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 290] - 
+
+
+15-Nov-19 00:21:42) [DecTree.py: hyperparameter_optimization_search - 293] - {'splitter': ['best'], 'criterion': ['gini'], 'max_depth': [16], 'max_features': [10], 'min_samples_leaf': [3], 'min_samples_split': [50]}
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 327] - -----------------All_iterated_models----------------
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 338] - (' mean_score:0.3125', ' std_score:0.058809348987622675', " params:{'splitter': 'best', 'min_samples_split': 50, 'min_samples_leaf': 3, 'max_features': 10, 'max_depth': 16, 'criterion': 'gini'}")
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 341] - ----------------Best_Model----------------
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 377] - accuracy_score:22.5,splitter:best,criterion:gini,max_depth:16,max_features:10,min_samples_leaf:3,min_samples_split:50,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.453455686569214
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 393] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 394] - Precision:[0.45       0.19047619 1.        ],   Recall:[1.         0.22222222 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 429] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 436] - [0.3125]
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 437] - [0.05880935]
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 443] - Mean:0.3125 std:0.11761869797524535 params:{'splitter': 'best', 'min_samples_split': 50, 'min_samples_leaf': 3, 'max_features': 10, 'max_depth': 16, 'criterion': 'gini'}
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 452] -  
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 453] - Detailed classification report:
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 454] - The model is trained on the full development set.
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 455] - The scores are computed on the full evaluation set.
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 456] -  
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 460] -               precision    recall  f1-score   support
+
+           0       0.26      0.23      0.24        22
+           1       0.19      0.22      0.21        18
+
+    accuracy                           0.23        40
+   macro avg       0.23      0.22      0.22        40
+weighted avg       0.23      0.23      0.23        40
+
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 463] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:21:44) [DecTree.py: calculate_score_and_report - 466] - [[ 5 17]
+ [14  4]]
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 403] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 404] - {'splitter': 'best', 'min_samples_split': 50, 'min_samples_leaf': 3, 'max_features': 10, 'max_depth': 16, 'criterion': 'gini'}
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 410] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 411] - DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=16,
+                       max_features=10, max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=3, min_samples_split=50,
+                       min_weight_fraction_leaf=0.0, presort=False,
+                       random_state=None, splitter='best')
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 416] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:21:44) [DecTree.py: process_trained_model_information - 417] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_criterion', 'param_max_depth', 'param_max_features', 'param_min_samples_leaf', 'param_min_samples_split', 'param_splitter', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:21:44) [DecTree.py: hyperparameter_optimization_search - 318] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:21:44) [DecTree.py: calculate_accuracy_score - 248] - Single Accuracy score of model: 0.125

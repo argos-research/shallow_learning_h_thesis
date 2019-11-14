@@ -1,0 +1,1 @@
+accuracy_score:32.5,kernel:linear,C:0.25,degree:1,gamma:auto_deprecated,coef0:0.0,tol:0.001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.555316925048828,CurrentDate:2019-11-15 00-28

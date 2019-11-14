@@ -1,0 +1,274 @@
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-08-28
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:08:28) [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 342] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 349] - 
+
+
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 351] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 352] - --------------------------------------------------
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 353] -     Search iteration: 1
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 354] -     CurrentDate: 2019-11-15 00-08-30
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 355] - --------------------------------------------------
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 356] - 
+
+
+15-Nov-19 00:08:30) [RanFor.py: hyperparameter_optimization_search - 359] - {'n_estimators': [100], 'max_depth': [25], 'min_samples_split': [8], 'min_samples_leaf': [5]}
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 395] - -----------------All_iterated_models----------------
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 406] - (' mean_score:0.2625', ' std_score:0.037149613464306855', " params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}")
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 410] - ----------------Best_Model----------------
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 448] - accuracy_score:17.5,n_estimators:100,criterion:gini,max_depth:25,max_features:auto,bootstrap:True,min_samples_leaf:5,min_samples_split:8,dataset_name_path:Datasets/TestDataset/feature_data.csv,running_time:7.603507995605469
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 464] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 465] - Precision:[0.45       0.22222222 1.        ],   Recall:[1.         0.33333333 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 501] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 508] - [0.2625]
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 509] - [0.03714961]
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 515] - Mean:0.2625 std:0.07429922692861371 params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 524] -  
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 525] - Detailed classification report:
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 526] - The model is trained on the full development set.
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 527] - The scores are computed on the full evaluation set.
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 528] -  
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 532] -               precision    recall  f1-score   support
+
+           0       0.08      0.05      0.06        22
+           1       0.22      0.33      0.27        18
+
+    accuracy                           0.17        40
+   macro avg       0.15      0.19      0.16        40
+weighted avg       0.14      0.17      0.15        40
+
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 535] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:08:37) [RanFor.py: calculate_score_and_report - 538] - [[ 1 21]
+ [12  6]]
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 474] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 475] - {'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 480] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 481] - RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=25, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=5, min_samples_split=8,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 487] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:08:37) [RanFor.py: process_trained_model_information - 488] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_max_depth', 'param_min_samples_leaf', 'param_min_samples_split', 'param_n_estimators', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 383] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 349] - 
+
+
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 351] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 352] - --------------------------------------------------
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 353] -     Search iteration: 2
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 354] -     CurrentDate: 2019-11-15 00-08-37
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 355] - --------------------------------------------------
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 356] - 
+
+
+15-Nov-19 00:08:37) [RanFor.py: hyperparameter_optimization_search - 359] - {'n_estimators': [100, 300, 500, 800, 1200], 'max_depth': [5, 8, 15, 25, 30], 'min_samples_split': [2, 5, 8, 50], 'min_samples_leaf': [1, 5, 9]}
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-09-46
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:09:46) [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:09:47) [RanFor.py: hyperparameter_optimization_search - 342] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:09:47) [RanFor.py: hyperparameter_optimization_search - 349] - 
+
+
+15-Nov-19 00:09:47) [RanFor.py: hyperparameter_optimization_search - 351] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:09:47) [RanFor.py: hyperparameter_optimization_search - 352] - --------------------------------------------------
+15-Nov-19 00:09:48) [RanFor.py: hyperparameter_optimization_search - 353] -     Search iteration: 1
+15-Nov-19 00:09:48) [RanFor.py: hyperparameter_optimization_search - 354] -     CurrentDate: 2019-11-15 00-09-47
+15-Nov-19 00:09:48) [RanFor.py: hyperparameter_optimization_search - 355] - --------------------------------------------------
+15-Nov-19 00:09:48) [RanFor.py: hyperparameter_optimization_search - 356] - 
+
+
+15-Nov-19 00:09:48) [RanFor.py: hyperparameter_optimization_search - 359] - {'n_estimators': [100], 'max_depth': [25], 'min_samples_split': [8], 'min_samples_leaf': [5]}
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 395] - -----------------All_iterated_models----------------
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 406] - (' mean_score:0.2625', ' std_score:0.05366714555683919', " params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}")
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 410] - ----------------Best_Model----------------
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 448] - accuracy_score:12.5,n_estimators:100,criterion:gini,max_depth:25,max_features:auto,bootstrap:True,min_samples_leaf:5,min_samples_split:8,dataset_name_path:Datasets/TestDataset/feature_data.csv,running_time:6.656576633453369
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 464] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 465] - Precision:[0.45       0.18518519 1.        ],   Recall:[1.         0.27777778 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 501] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 508] - [0.2625]
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 509] - [0.05366715]
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 515] - Mean:0.2625 std:0.10733429111367838 params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 524] -  
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 525] - Detailed classification report:
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 526] - The model is trained on the full development set.
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 527] - The scores are computed on the full evaluation set.
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 528] -  
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 532] -               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        22
+           1       0.19      0.28      0.22        18
+
+    accuracy                           0.12        40
+   macro avg       0.09      0.14      0.11        40
+weighted avg       0.08      0.12      0.10        40
+
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 535] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:09:54) [RanFor.py: calculate_score_and_report - 538] - [[ 0 22]
+ [13  5]]
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 474] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 475] - {'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 480] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 481] - RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=25, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=5, min_samples_split=8,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 487] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:09:54) [RanFor.py: process_trained_model_information - 488] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_max_depth', 'param_min_samples_leaf', 'param_min_samples_split', 'param_n_estimators', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:09:54) [RanFor.py: hyperparameter_optimization_search - 383] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-11-14
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:11:14) [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:11:14) [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:11:14) [RanFor.py: classification_report - 292] - classification report
+15-Nov-19 00:11:14) [RanFor.py: confusion_matrix - 302] - confusion matrix
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-12-33
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:12:33) [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:12:33) [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-13-53
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:13:53) [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:13:53) [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:13:55) [RanFor.py: calculate_accuracy_score - 277] - 0.125
+15-Nov-19 00:13:55) [RanFor.py: classification_report - 293] - classification report
+15-Nov-19 00:13:55) [RanFor.py: confusion_matrix - 303] - confusion matrix
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-14-18
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:14:18) [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:14:18) [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:14:23) [RanFor.py: calculate_accuracy_score - 277] - Single Accuracy score of model: 0.125
+15-Nov-19 00:14:23) [RanFor.py: classification_report - 293] - classification report
+15-Nov-19 00:14:23) [RanFor.py: confusion_matrix - 303] - confusion matrix
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-15-22
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:15:22) [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:15:22) [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:15:22) [RanFor.py: calculate_accuracy_score - 276] - Single Accuracy score of model: 0.125
+15-Nov-19 00:15:22) [RanFor.py: classification_report - 286] - classification report
+15-Nov-19 00:15:22) [RanFor.py: confusion_matrix - 296] - confusion matrix

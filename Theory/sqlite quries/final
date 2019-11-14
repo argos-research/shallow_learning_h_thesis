@@ -1,0 +1,129 @@
+
+ -- Calculation job information in average
+
+  DROP TABLE JOB_INFO;
+  CREATE TEMPORARY TABLE JOB_INFO AS
+  SELECT
+  Set_ID
+  ,Task_ID
+  ,Avg(Job.End_Date - Job.Start_Date)  as AvgTime
+  ,min(Job.End_Date - Job.Start_Date) as MinTime
+  ,Max(Job.End_Date - Job.Start_Date) as MaxTime
+  FROM
+  Job
+  GROUP BY Set_ID, Task_ID;
+
+  SELECT * FROM JOB_INFO;
+
+
+  -- combining data for task 1
+
+  CREATE TEMPORARY TABLE Task1_INFO AS
+  SELECT TaskSet.Set_ID
+  ,TaskSet.TASK1_ID
+  ,TaskSet.Successful
+  ,TASK.Priority
+  ,Task.PKG
+  ,Task.Arg
+  ,(Task.CriticalTime/1000) as CriticalTime
+  ,(Task.Period/1000) as Period
+  ,Task.Number_of_Jobs
+  ,jo.AvgTime
+  ,jo.MinTime
+  ,jo.MaxTime
+  FROM
+  TaskSet
+  LEFT JOIN
+  TASK
+  ON
+  TASKSET.TASK1_ID = TASK.Task_ID
+  LEFT JOIN
+  JOB_INFO as jo
+  on
+  jo.Set_ID = TaskSet.Set_ID
+  AND
+  jo.Task_ID = TaskSet.TASK1_ID;
+
+
+  SELECT * FROM Task1_INFO Limit 100;
+
+  -- combining data for task 1
+
+  CREATE TEMPORARY TABLE Task2_INFO AS
+  SELECT
+  TaskSet.Set_ID
+  ,TaskSet.TASK2_ID
+  ,TaskSet.Successful
+  ,TASK.Priority, Task.PKG, Task.Arg, (Task.CriticalTime/1000) as CriticalTime, (Task.Period/1000) as Period, Task.Number_of_Jobs
+  ,jo.AvgTime
+  ,jo.MinTime
+  ,jo.MaxTime
+  FROM
+  TaskSet
+  LEFT JOIN
+  TASK
+  ON
+  TASKSET.TASK2_ID = TASK.Task_ID
+  LEFT JOIN
+  JOB_INFO as jo
+  on
+  jo.Set_ID = TaskSet.Set_ID
+  AND
+  jo.Task_ID = TaskSet.TASK2_ID;
+
+
+  select count(*)
+  from Task2_INFO;
+
+
+    -- combining data for task 1
+
+  CREATE TEMPORARY TABLE Task3_INFO AS
+  SELECT
+  TaskSet.Set_ID
+  ,TaskSet.TASK3_ID
+  ,TaskSet.Successful
+  ,TASK.Priority, Task.PKG, Task.Arg, (Task.CriticalTime/1000) as CriticalTime, (Task.Period/1000) as Period, Task.Number_of_Jobs
+  ,jo.AvgTime
+  ,jo.MinTime
+  ,jo.MaxTime
+  FROM
+  TaskSet
+  LEFT JOIN
+  TASK
+  ON
+  TASKSET.TASK3_ID = TASK.Task_ID
+  LEFT JOIN
+  JOB_INFO as jo
+  on
+  jo.Set_ID = TaskSet.Set_ID
+  AND
+  jo.Task_ID = TaskSet.TASK3_ID;
+
+   select count(*)
+  from Task3_INFO;
+
+
+  CREATE TEMPORARY TABLE All_taskset_task_job_info AS
+  select *
+  from TaskSet
+  LEFT JOIN Task1_INFO
+  ON
+  TaskSet.Set_ID = Task1_INFO.Set_ID
+  LEFT JOIN Task2_INFO
+  ON
+  TaskSet.Set_ID = Task2_INFO.Set_ID
+  LEFT JOIN Task3_INFO
+  ON
+  TaskSet.Set_ID = Task3_INFO.Set_ID
+
+
+
+  where TaskSet.Set_ID = 1262154
+
+
+  from Task1_INFO
+  LEFT JOIN Task2_INFO
+  ON
+  Task1_INFO.Set_ID = Task2_INFO.Set_ID
+  left Join

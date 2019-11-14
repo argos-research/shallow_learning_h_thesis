@@ -1,0 +1,141 @@
+15-Nov-19 00:25:41) [LogReg.py: __init__ - 145] - 
+
+
+
+
+15-Nov-19 00:25:41) [LogReg.py: __init__ - 146] - 
+
+
+
+
+15-Nov-19 00:25:41) [LogReg.py: __init__ - 147] - =============== Initialize the LogReg_class variable ==================
+15-Nov-19 00:25:41) [LogReg.py: __init__ - 148] - ===== Working on following data set: ======
+15-Nov-19 00:25:41) [LogReg.py: __init__ - 149] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:25:41) [LogReg.py: __init__ - 151] -  CurrentDate: 2019-11-15 00-25-41
+15-Nov-19 00:25:41) [LogReg.py: __init__ - 152] - 
+
+
+
+
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 325] - ------------------------- Random-Search improving Pv6 results on R3------------------------
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 332] - 
+
+
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 334] - ------------------------- Hyperparameoptimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)ter_optimization_new ------------------------
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 335] - --------------------------------------------------
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 336] -     Search iteration: 1
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 337] -     CurrentDate: 2019-11-15 00-25-41
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 338] - --------------------------------------------------
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 339] - 
+
+
+15-Nov-19 00:25:41) [LogReg.py: hyperparameter_optimization_search - 342] - {'penalty': ['l2'], 'dual': [True], 'solver': ['liblinear'], 'C': [100], 'multi_class': ['ovr'], 'max_iter': [110], 'tol': [0.0001]}
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 377] - -----------------All_iterated_models----------------
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 388] - (' mean_score:0.44375', ' std_score:0.0476619147054751', " params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}")
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 392] - ----------------Best_Model----------------
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 435] - accuracy_score:42.5,penalty:l2,dual:True,solver:liblinear,C:100,multi_class:ovr,max_iter:110,tol:0.0001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:1.4634931087493896
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 451] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 452] - Precision:[0.45       0.43589744 1.        ],   Recall:[1.         0.94444444 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 488] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 495] - [0.44375]
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 496] - [0.04766191]
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 502] - Mean:0.44375 std:0.0953238294109502 params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 511] -  
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 512] - Detailed classification report:
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 513] - The model is trained on the full development set.
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 514] - The scores are computed on the full evaluation set.
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 515] -  
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 519] -               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        22
+           1       0.44      0.94      0.60        18
+
+    accuracy                           0.42        40
+   macro avg       0.22      0.47      0.30        40
+weighted avg       0.20      0.42      0.27        40
+
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 522] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:25:43) [LogReg.py: calculate_score_and_report - 525] - [[ 0 22]
+ [ 1 17]]
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 461] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 462] - {'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 467] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 468] - LogisticRegression(C=100, class_weight=None, dual=True, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=110,
+                   multi_class='ovr', n_jobs=None, penalty='l2',
+                   random_state=None, solver='liblinear', tol=0.0001, verbose=0,
+                   warm_start=False)
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 474] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:25:43) [LogReg.py: process_trained_model_information - 475] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_C', 'param_dual', 'param_max_iter', 'param_multi_class', 'param_penalty', 'param_solver', 'param_tol', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:25:43) [LogReg.py: hyperparameter_optimization_search - 365] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:26:16) [LogReg.py: __init__ - 145] - 
+
+
+
+
+15-Nov-19 00:26:16) [LogReg.py: __init__ - 146] - 
+
+
+
+
+15-Nov-19 00:26:16) [LogReg.py: __init__ - 147] - =============== Initialize the LogReg_class variable ==================
+15-Nov-19 00:26:16) [LogReg.py: __init__ - 148] - ===== Working on following data set: ======
+15-Nov-19 00:26:16) [LogReg.py: __init__ - 149] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:26:16) [LogReg.py: __init__ - 151] -  CurrentDate: 2019-11-15 00-26-16
+15-Nov-19 00:26:16) [LogReg.py: __init__ - 152] - 
+
+
+
+
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 325] - ------------------------- Random-Search improving Pv6 results on R3------------------------
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 332] - 
+
+
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 334] - ------------------------- Hyperparameoptimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)ter_optimization_new ------------------------
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 335] - --------------------------------------------------
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 336] -     Search iteration: 1
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 337] -     CurrentDate: 2019-11-15 00-26-16
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 338] - --------------------------------------------------
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 339] - 
+
+
+15-Nov-19 00:26:16) [LogReg.py: hyperparameter_optimization_search - 342] - {'penalty': ['l2'], 'dual': [True], 'solver': ['liblinear'], 'C': [100], 'multi_class': ['ovr'], 'max_iter': [110], 'tol': [0.0001]}
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 377] - -----------------All_iterated_models----------------
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 388] - (' mean_score:0.475', ' std_score:0.03613039391046162', " params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}")
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 392] - ----------------Best_Model----------------
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 435] - accuracy_score:47.5,penalty:l2,dual:True,solver:liblinear,C:100,multi_class:ovr,max_iter:110,tol:0.0001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.5257182121276855
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 451] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 452] - Precision:[0.45       0.33333333 1.        ],   Recall:[1.         0.16666667 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 488] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 495] - [0.475]
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 496] - [0.03613039]
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 502] - Mean:0.475 std:0.07226078782092324 params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 511] -  
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 512] - Detailed classification report:
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 513] - The model is trained on the full development set.
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 514] - The scores are computed on the full evaluation set.
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 515] -  
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 519] -               precision    recall  f1-score   support
+
+           0       0.52      0.73      0.60        22
+           1       0.33      0.17      0.22        18
+
+    accuracy                           0.48        40
+   macro avg       0.42      0.45      0.41        40
+weighted avg       0.43      0.47      0.43        40
+
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 522] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:26:18) [LogReg.py: calculate_score_and_report - 525] - [[16  6]
+ [15  3]]
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 461] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 462] - {'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 467] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 468] - LogisticRegression(C=100, class_weight=None, dual=True, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=110,
+                   multi_class='ovr', n_jobs=None, penalty='l2',
+                   random_state=None, solver='liblinear', tol=0.0001, verbose=0,
+                   warm_start=False)
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 474] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:26:18) [LogReg.py: process_trained_model_information - 475] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_C', 'param_dual', 'param_max_iter', 'param_multi_class', 'param_penalty', 'param_solver', 'param_tol', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:26:18) [LogReg.py: hyperparameter_optimization_search - 365] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:26:18) [LogReg.py: calculate_accuracy_score - 297] - Single Accuracy score of model: 0.3

@@ -1,0 +1,757 @@
+12-Oct-19 15:37:50 [ShallowLearning_Training.py: <module> - 192] - main start
+12-Oct-19 15:37:50 [ShallowLearning_Training.py: load_data - 94] - Load_data
+
+14-Nov-19 23:53:20 [ShallowLearning_Training.py: <module> - 300] - main_program start
+14-Nov-19 23:53:27 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+14-Nov-19 23:53:27 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+14-Nov-19 23:53:27 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:07:30 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:07:30 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:07:30 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:07:30 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:07:30 [ShallowLearning_Training.py: load_dataset - 107] - Error in data loading
+15-Nov-19 00:07:30 [ShallowLearning_Training.py: load_dataset - 108] - Exception occurred in Load_data
+Traceback (most recent call last):
+  File "/home/maira/Documents/ThesisUbuntu/shallow_learning_h_thesis/src/ShallowLearning_Training.py", line 98, in load_dataset
+    df_feature_data = pd.read_pickle(path + DataSetPath + "feature_data.pkl")
+  File "/home/maira/shallow_learning_H_thesis/lib/python3.6/site-packages/pandas/io/pickle.py", line 145, in read_pickle
+    f, fh = _get_handle(path, "rb", compression=compression, is_text=False)
+  File "/home/maira/shallow_learning_H_thesis/lib/python3.6/site-packages/pandas/io/common.py", line 405, in _get_handle
+    f = open(path_or_buf, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '../Datasets/TestDataset/test_feature_data.pkl'
+15-Nov-19 00:08:27 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:08:27 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:08:27 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:08:27 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:08:27 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:08:27 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:08:27 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-08-28
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:08:28 [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 342] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 349] - 
+
+
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 351] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 352] - --------------------------------------------------
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 353] -     Search iteration: 1
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 354] -     CurrentDate: 2019-11-15 00-08-30
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 355] - --------------------------------------------------
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 356] - 
+
+
+15-Nov-19 00:08:30 [RanFor.py: hyperparameter_optimization_search - 359] - {'n_estimators': [100], 'max_depth': [25], 'min_samples_split': [8], 'min_samples_leaf': [5]}
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 395] - -----------------All_iterated_models----------------
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 406] - (' mean_score:0.2625', ' std_score:0.037149613464306855', " params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}")
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 410] - ----------------Best_Model----------------
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 448] - accuracy_score:17.5,n_estimators:100,criterion:gini,max_depth:25,max_features:auto,bootstrap:True,min_samples_leaf:5,min_samples_split:8,dataset_name_path:Datasets/TestDataset/feature_data.csv,running_time:7.603507995605469
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 464] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 465] - Precision:[0.45       0.22222222 1.        ],   Recall:[1.         0.33333333 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 501] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 508] - [0.2625]
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 509] - [0.03714961]
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 515] - Mean:0.2625 std:0.07429922692861371 params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 524] -  
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 525] - Detailed classification report:
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 526] - The model is trained on the full development set.
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 527] - The scores are computed on the full evaluation set.
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 528] -  
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 532] -               precision    recall  f1-score   support
+
+           0       0.08      0.05      0.06        22
+           1       0.22      0.33      0.27        18
+
+    accuracy                           0.17        40
+   macro avg       0.15      0.19      0.16        40
+weighted avg       0.14      0.17      0.15        40
+
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 535] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:08:37 [RanFor.py: calculate_score_and_report - 538] - [[ 1 21]
+ [12  6]]
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 474] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 475] - {'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 480] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 481] - RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=25, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=5, min_samples_split=8,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 487] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:08:37 [RanFor.py: process_trained_model_information - 488] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_max_depth', 'param_min_samples_leaf', 'param_min_samples_split', 'param_n_estimators', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 383] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 349] - 
+
+
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 351] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 352] - --------------------------------------------------
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 353] -     Search iteration: 2
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 354] -     CurrentDate: 2019-11-15 00-08-37
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 355] - --------------------------------------------------
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 356] - 
+
+
+15-Nov-19 00:08:37 [RanFor.py: hyperparameter_optimization_search - 359] - {'n_estimators': [100, 300, 500, 800, 1200], 'max_depth': [5, 8, 15, 25, 30], 'min_samples_split': [2, 5, 8, 50], 'min_samples_leaf': [1, 5, 9]}
+15-Nov-19 00:09:44 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:09:44 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:09:44 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:09:44 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:09:44 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:09:44 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:09:44 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-09-46
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:09:46 [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:09:47 [RanFor.py: hyperparameter_optimization_search - 342] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:09:47 [RanFor.py: hyperparameter_optimization_search - 349] - 
+
+
+15-Nov-19 00:09:47 [RanFor.py: hyperparameter_optimization_search - 351] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:09:47 [RanFor.py: hyperparameter_optimization_search - 352] - --------------------------------------------------
+15-Nov-19 00:09:48 [RanFor.py: hyperparameter_optimization_search - 353] -     Search iteration: 1
+15-Nov-19 00:09:48 [RanFor.py: hyperparameter_optimization_search - 354] -     CurrentDate: 2019-11-15 00-09-47
+15-Nov-19 00:09:48 [RanFor.py: hyperparameter_optimization_search - 355] - --------------------------------------------------
+15-Nov-19 00:09:48 [RanFor.py: hyperparameter_optimization_search - 356] - 
+
+
+15-Nov-19 00:09:48 [RanFor.py: hyperparameter_optimization_search - 359] - {'n_estimators': [100], 'max_depth': [25], 'min_samples_split': [8], 'min_samples_leaf': [5]}
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 395] - -----------------All_iterated_models----------------
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 406] - (' mean_score:0.2625', ' std_score:0.05366714555683919', " params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}")
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 410] - ----------------Best_Model----------------
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 448] - accuracy_score:12.5,n_estimators:100,criterion:gini,max_depth:25,max_features:auto,bootstrap:True,min_samples_leaf:5,min_samples_split:8,dataset_name_path:Datasets/TestDataset/feature_data.csv,running_time:6.656576633453369
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 464] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 465] - Precision:[0.45       0.18518519 1.        ],   Recall:[1.         0.27777778 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 501] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 508] - [0.2625]
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 509] - [0.05366715]
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 515] - Mean:0.2625 std:0.10733429111367838 params:{'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 524] -  
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 525] - Detailed classification report:
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 526] - The model is trained on the full development set.
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 527] - The scores are computed on the full evaluation set.
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 528] -  
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 532] -               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        22
+           1       0.19      0.28      0.22        18
+
+    accuracy                           0.12        40
+   macro avg       0.09      0.14      0.11        40
+weighted avg       0.08      0.12      0.10        40
+
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 535] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:09:54 [RanFor.py: calculate_score_and_report - 538] - [[ 0 22]
+ [13  5]]
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 474] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 475] - {'n_estimators': 100, 'min_samples_split': 8, 'min_samples_leaf': 5, 'max_depth': 25}
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 480] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 481] - RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=25, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=5, min_samples_split=8,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 487] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:09:54 [RanFor.py: process_trained_model_information - 488] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_max_depth', 'param_min_samples_leaf', 'param_min_samples_split', 'param_n_estimators', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:09:54 [RanFor.py: hyperparameter_optimization_search - 383] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:09:54 [ShallowLearning_Training.py: <module> - 356] - code completely executed
+15-Nov-19 00:11:14 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:11:14 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:11:14 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:11:14 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:11:14 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:11:14 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:11:14 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-11-14
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:11:14 [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:11:14 [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:11:14 [RanFor.py: classification_report - 292] - classification report
+15-Nov-19 00:11:14 [RanFor.py: confusion_matrix - 302] - confusion matrix
+15-Nov-19 00:11:14 [ShallowLearning_Training.py: <module> - 357] - code completely executed
+15-Nov-19 00:12:33 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:12:33 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:12:33 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:12:33 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:12:33 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:12:33 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:12:33 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-12-33
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:12:33 [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:12:33 [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:13:53 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:13:53 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:13:53 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:13:53 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:13:53 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:13:53 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:13:53 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-13-53
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:13:53 [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:13:53 [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:13:55 [RanFor.py: calculate_accuracy_score - 277] - 0.125
+15-Nov-19 00:13:55 [RanFor.py: classification_report - 293] - classification report
+15-Nov-19 00:13:55 [RanFor.py: confusion_matrix - 303] - confusion matrix
+15-Nov-19 00:13:55 [ShallowLearning_Training.py: <module> - 357] - code completely executed
+15-Nov-19 00:14:18 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:14:18 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:14:18 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:14:18 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:14:18 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:14:18 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:14:18 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-14-18
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:14:18 [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:14:18 [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:14:23 [RanFor.py: calculate_accuracy_score - 277] - Single Accuracy score of model: 0.125
+15-Nov-19 00:14:23 [RanFor.py: classification_report - 293] - classification report
+15-Nov-19 00:14:23 [RanFor.py: confusion_matrix - 303] - confusion matrix
+15-Nov-19 00:14:23 [ShallowLearning_Training.py: <module> - 357] - code completely executed
+15-Nov-19 00:15:22 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:15:22 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:15:22 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:15:22 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:15:22 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:15:22 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:15:22 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 108] - 
+
+
+
+
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 109] - 
+
+
+
+
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 110] - =============== Initialize the Ranfor_class variable ==================
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 111] - ===== Working on following data set: ======
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 112] - Datasets/TestDataset/feature_data.csv
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 114] -  CurrentDate: 2019-11-15 00-15-22
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 115] - 
+
+
+
+
+15-Nov-19 00:15:22 [RanFor.py: __init__ - 136] - Initialization Done
+15-Nov-19 00:15:22 [RanFor.py: predict - 269] - Single Model prediction
+15-Nov-19 00:15:22 [RanFor.py: calculate_accuracy_score - 276] - Single Accuracy score of model: 0.125
+15-Nov-19 00:15:22 [RanFor.py: classification_report - 286] - classification report
+15-Nov-19 00:15:22 [RanFor.py: confusion_matrix - 296] - confusion matrix
+15-Nov-19 00:15:22 [ShallowLearning_Training.py: <module> - 357] - code completely executed
+15-Nov-19 00:21:42 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:21:42 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:21:42 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:21:42 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:21:42 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:21:42 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:21:42 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:21:42 [DecTree.py: __init__ - 123] - 
+
+
+
+
+15-Nov-19 00:21:42 [DecTree.py: __init__ - 124] - 
+
+
+
+
+15-Nov-19 00:21:42 [DecTree.py: __init__ - 125] - =============== Initialize the DecTree_class variable ==================
+15-Nov-19 00:21:42 [DecTree.py: __init__ - 126] - ===== Working on following data set: ======
+15-Nov-19 00:21:42 [DecTree.py: __init__ - 127] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:21:42 [DecTree.py: __init__ - 129] -  CurrentDate: 2019-11-15 00-21-42
+15-Nov-19 00:21:42 [DecTree.py: __init__ - 130] - 
+
+
+
+
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 276] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 283] - 
+
+
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 285] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 286] - --------------------------------------------------
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 287] -     Search iteration: 1
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 288] -     CurrentDate: 2019-11-15 00-21-42
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 289] - --------------------------------------------------
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 290] - 
+
+
+15-Nov-19 00:21:42 [DecTree.py: hyperparameter_optimization_search - 293] - {'splitter': ['best'], 'criterion': ['gini'], 'max_depth': [16], 'max_features': [10], 'min_samples_leaf': [3], 'min_samples_split': [50]}
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 327] - -----------------All_iterated_models----------------
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 338] - (' mean_score:0.3125', ' std_score:0.058809348987622675', " params:{'splitter': 'best', 'min_samples_split': 50, 'min_samples_leaf': 3, 'max_features': 10, 'max_depth': 16, 'criterion': 'gini'}")
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 341] - ----------------Best_Model----------------
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 377] - accuracy_score:22.5,splitter:best,criterion:gini,max_depth:16,max_features:10,min_samples_leaf:3,min_samples_split:50,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.453455686569214
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 393] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 394] - Precision:[0.45       0.19047619 1.        ],   Recall:[1.         0.22222222 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 429] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 436] - [0.3125]
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 437] - [0.05880935]
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 443] - Mean:0.3125 std:0.11761869797524535 params:{'splitter': 'best', 'min_samples_split': 50, 'min_samples_leaf': 3, 'max_features': 10, 'max_depth': 16, 'criterion': 'gini'}
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 452] -  
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 453] - Detailed classification report:
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 454] - The model is trained on the full development set.
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 455] - The scores are computed on the full evaluation set.
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 456] -  
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 460] -               precision    recall  f1-score   support
+
+           0       0.26      0.23      0.24        22
+           1       0.19      0.22      0.21        18
+
+    accuracy                           0.23        40
+   macro avg       0.23      0.22      0.22        40
+weighted avg       0.23      0.23      0.23        40
+
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 463] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:21:44 [DecTree.py: calculate_score_and_report - 466] - [[ 5 17]
+ [14  4]]
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 403] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 404] - {'splitter': 'best', 'min_samples_split': 50, 'min_samples_leaf': 3, 'max_features': 10, 'max_depth': 16, 'criterion': 'gini'}
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 410] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 411] - DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=16,
+                       max_features=10, max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=3, min_samples_split=50,
+                       min_weight_fraction_leaf=0.0, presort=False,
+                       random_state=None, splitter='best')
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 416] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:21:44 [DecTree.py: process_trained_model_information - 417] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_criterion', 'param_max_depth', 'param_max_features', 'param_min_samples_leaf', 'param_min_samples_split', 'param_splitter', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:21:44 [DecTree.py: hyperparameter_optimization_search - 318] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:21:44 [DecTree.py: calculate_accuracy_score - 248] - Single Accuracy score of model: 0.125
+15-Nov-19 00:21:44 [ShallowLearning_Training.py: <module> - 358] - code completely executed
+15-Nov-19 00:23:34 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:23:34 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:23:34 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:23:34 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:23:34 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:23:34 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:23:34 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:23:34 [KNN.py: __init__ - 184] - 
+
+
+
+
+15-Nov-19 00:23:34 [KNN.py: __init__ - 185] - 
+
+
+
+
+15-Nov-19 00:23:34 [KNN.py: __init__ - 186] - =============== Initialize the KNN_class variable ==================
+15-Nov-19 00:23:34 [KNN.py: __init__ - 187] - ===== Working on following data set: ======
+15-Nov-19 00:23:34 [KNN.py: __init__ - 188] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:23:34 [KNN.py: __init__ - 190] -  CurrentDate: 2019-11-15 00-23-34
+15-Nov-19 00:23:34 [KNN.py: __init__ - 191] - 
+
+
+
+
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 268] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 275] - 
+
+
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 277] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 278] - --------------------------------------------------
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 279] -     Search iteration: 1
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 280] -     CurrentDate: 2019-11-15 00-23-34
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 281] - --------------------------------------------------
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 282] - 
+
+
+15-Nov-19 00:23:34 [KNN.py: hyperparameter_optimization_search - 285] - {'n_neighbors': [25], 'weights': ['distance'], 'algorithm': ['kd_tree'], 'n_jobs': [-1], 'leaf_size': [30], 'p': [3]}
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 319] - -----------------All_iterated_models----------------
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 330] - (' mean_score:0.175', ' std_score:0.04468309177000934', " params:{'weights': 'distance', 'p': 3, 'n_neighbors': 25, 'n_jobs': -1, 'leaf_size': 30, 'algorithm': 'kd_tree'}")
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 334] - ----------------Best_Model----------------
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 367] - accuracy_score:12.5,n_neighbors:25,weights:distance,algorithm:kd_tree,p:3,leaf_size:30,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.863288164138794
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 383] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 384] - Precision:[0.45 0.16 1.  ],   Recall:[1.         0.22222222 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 420] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 427] - [0.175]
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 428] - [0.04468309]
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 434] - Mean:0.175 std:0.08936618354001868 params:{'weights': 'distance', 'p': 3, 'n_neighbors': 25, 'n_jobs': -1, 'leaf_size': 30, 'algorithm': 'kd_tree'}
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 443] -  
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 444] - Detailed classification report:
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 445] - The model is trained on the full development set.
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 446] - The scores are computed on the full evaluation set.
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 447] -  
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 451] -               precision    recall  f1-score   support
+
+           0       0.07      0.05      0.05        22
+           1       0.16      0.22      0.19        18
+
+    accuracy                           0.12        40
+   macro avg       0.11      0.13      0.12        40
+weighted avg       0.11      0.12      0.11        40
+
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 454] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:23:37 [KNN.py: calculate_score_and_report - 457] - [[ 1 21]
+ [14  4]]
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 393] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 394] - {'weights': 'distance', 'p': 3, 'n_neighbors': 25, 'n_jobs': -1, 'leaf_size': 30, 'algorithm': 'kd_tree'}
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 399] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 400] - KNeighborsClassifier(algorithm='kd_tree', leaf_size=30, metric='minkowski',
+                     metric_params=None, n_jobs=-1, n_neighbors=25, p=3,
+                     weights='distance')
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 406] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:23:37 [KNN.py: process_trained_model_information - 407] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_algorithm', 'param_leaf_size', 'param_n_jobs', 'param_n_neighbors', 'param_p', 'param_weights', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:23:37 [KNN.py: hyperparameter_optimization_search - 308] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:23:37 [KNN.py: calculate_accuracy_score - 240] - Single Accuracy score of model: 0.325
+15-Nov-19 00:23:37 [ShallowLearning_Training.py: <module> - 364] - code completely executed
+15-Nov-19 00:25:41 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:25:41 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:25:41 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:25:41 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:25:41 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:25:41 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:25:41 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:25:41 [LogReg.py: __init__ - 145] - 
+
+
+
+
+15-Nov-19 00:25:41 [LogReg.py: __init__ - 146] - 
+
+
+
+
+15-Nov-19 00:25:41 [LogReg.py: __init__ - 147] - =============== Initialize the LogReg_class variable ==================
+15-Nov-19 00:25:41 [LogReg.py: __init__ - 148] - ===== Working on following data set: ======
+15-Nov-19 00:25:41 [LogReg.py: __init__ - 149] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:25:41 [LogReg.py: __init__ - 151] -  CurrentDate: 2019-11-15 00-25-41
+15-Nov-19 00:25:41 [LogReg.py: __init__ - 152] - 
+
+
+
+
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 325] - ------------------------- Random-Search improving Pv6 results on R3------------------------
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 332] - 
+
+
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 334] - ------------------------- Hyperparameoptimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)ter_optimization_new ------------------------
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 335] - --------------------------------------------------
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 336] -     Search iteration: 1
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 337] -     CurrentDate: 2019-11-15 00-25-41
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 338] - --------------------------------------------------
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 339] - 
+
+
+15-Nov-19 00:25:41 [LogReg.py: hyperparameter_optimization_search - 342] - {'penalty': ['l2'], 'dual': [True], 'solver': ['liblinear'], 'C': [100], 'multi_class': ['ovr'], 'max_iter': [110], 'tol': [0.0001]}
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 377] - -----------------All_iterated_models----------------
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 388] - (' mean_score:0.44375', ' std_score:0.0476619147054751', " params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}")
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 392] - ----------------Best_Model----------------
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 435] - accuracy_score:42.5,penalty:l2,dual:True,solver:liblinear,C:100,multi_class:ovr,max_iter:110,tol:0.0001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:1.4634931087493896
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 451] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 452] - Precision:[0.45       0.43589744 1.        ],   Recall:[1.         0.94444444 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 488] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 495] - [0.44375]
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 496] - [0.04766191]
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 502] - Mean:0.44375 std:0.0953238294109502 params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 511] -  
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 512] - Detailed classification report:
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 513] - The model is trained on the full development set.
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 514] - The scores are computed on the full evaluation set.
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 515] -  
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 519] -               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        22
+           1       0.44      0.94      0.60        18
+
+    accuracy                           0.42        40
+   macro avg       0.22      0.47      0.30        40
+weighted avg       0.20      0.42      0.27        40
+
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 522] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:25:43 [LogReg.py: calculate_score_and_report - 525] - [[ 0 22]
+ [ 1 17]]
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 461] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 462] - {'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 467] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 468] - LogisticRegression(C=100, class_weight=None, dual=True, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=110,
+                   multi_class='ovr', n_jobs=None, penalty='l2',
+                   random_state=None, solver='liblinear', tol=0.0001, verbose=0,
+                   warm_start=False)
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 474] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:25:43 [LogReg.py: process_trained_model_information - 475] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_C', 'param_dual', 'param_max_iter', 'param_multi_class', 'param_penalty', 'param_solver', 'param_tol', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:25:43 [LogReg.py: hyperparameter_optimization_search - 365] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:25:43 [ShallowLearning_Training.py: run_model - 159] - Error in run_model
+15-Nov-19 00:25:43 [ShallowLearning_Training.py: run_model - 160] - Exception occurred in run_model
+Traceback (most recent call last):
+  File "/home/maira/Documents/ThesisUbuntu/shallow_learning_h_thesis/src/ShallowLearning_Training.py", line 132, in run_model
+    SL_algo.train_model()
+AttributeError: 'LogReg_class' object has no attribute 'train_model'
+15-Nov-19 00:25:43 [ShallowLearning_Training.py: <module> - 363] - Error in main program execution
+15-Nov-19 00:25:43 [ShallowLearning_Training.py: <module> - 364] - Exception occurred in mainProgram
+Traceback (most recent call last):
+  File "/home/maira/Documents/ThesisUbuntu/shallow_learning_h_thesis/src/ShallowLearning_Training.py", line 356, in <module>
+    run_model(LogReg_1)
+  File "/home/maira/Documents/ThesisUbuntu/shallow_learning_h_thesis/src/ShallowLearning_Training.py", line 161, in run_model
+    raise e
+  File "/home/maira/Documents/ThesisUbuntu/shallow_learning_h_thesis/src/ShallowLearning_Training.py", line 132, in run_model
+    SL_algo.train_model()
+AttributeError: 'LogReg_class' object has no attribute 'train_model'
+15-Nov-19 00:26:16 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:26:16 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:26:16 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:26:16 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:26:16 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:26:16 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:26:16 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:26:16 [LogReg.py: __init__ - 145] - 
+
+
+
+
+15-Nov-19 00:26:16 [LogReg.py: __init__ - 146] - 
+
+
+
+
+15-Nov-19 00:26:16 [LogReg.py: __init__ - 147] - =============== Initialize the LogReg_class variable ==================
+15-Nov-19 00:26:16 [LogReg.py: __init__ - 148] - ===== Working on following data set: ======
+15-Nov-19 00:26:16 [LogReg.py: __init__ - 149] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:26:16 [LogReg.py: __init__ - 151] -  CurrentDate: 2019-11-15 00-26-16
+15-Nov-19 00:26:16 [LogReg.py: __init__ - 152] - 
+
+
+
+
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 325] - ------------------------- Random-Search improving Pv6 results on R3------------------------
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 332] - 
+
+
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 334] - ------------------------- Hyperparameoptimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)ter_optimization_new ------------------------
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 335] - --------------------------------------------------
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 336] -     Search iteration: 1
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 337] -     CurrentDate: 2019-11-15 00-26-16
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 338] - --------------------------------------------------
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 339] - 
+
+
+15-Nov-19 00:26:16 [LogReg.py: hyperparameter_optimization_search - 342] - {'penalty': ['l2'], 'dual': [True], 'solver': ['liblinear'], 'C': [100], 'multi_class': ['ovr'], 'max_iter': [110], 'tol': [0.0001]}
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 377] - -----------------All_iterated_models----------------
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 388] - (' mean_score:0.475', ' std_score:0.03613039391046162', " params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}")
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 392] - ----------------Best_Model----------------
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 435] - accuracy_score:47.5,penalty:l2,dual:True,solver:liblinear,C:100,multi_class:ovr,max_iter:110,tol:0.0001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.5257182121276855
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 451] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 452] - Precision:[0.45       0.33333333 1.        ],   Recall:[1.         0.16666667 0.        ],   Thresholds:[0 1]
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 488] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 495] - [0.475]
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 496] - [0.03613039]
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 502] - Mean:0.475 std:0.07226078782092324 params:{'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 511] -  
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 512] - Detailed classification report:
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 513] - The model is trained on the full development set.
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 514] - The scores are computed on the full evaluation set.
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 515] -  
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 519] -               precision    recall  f1-score   support
+
+           0       0.52      0.73      0.60        22
+           1       0.33      0.17      0.22        18
+
+    accuracy                           0.48        40
+   macro avg       0.42      0.45      0.41        40
+weighted avg       0.43      0.47      0.43        40
+
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 522] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:26:18 [LogReg.py: calculate_score_and_report - 525] - [[16  6]
+ [15  3]]
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 461] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 462] - {'tol': 0.0001, 'solver': 'liblinear', 'penalty': 'l2', 'multi_class': 'ovr', 'max_iter': 110, 'dual': True, 'C': 100}
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 467] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 468] - LogisticRegression(C=100, class_weight=None, dual=True, fit_intercept=True,
+                   intercept_scaling=1, l1_ratio=None, max_iter=110,
+                   multi_class='ovr', n_jobs=None, penalty='l2',
+                   random_state=None, solver='liblinear', tol=0.0001, verbose=0,
+                   warm_start=False)
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 474] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:26:18 [LogReg.py: process_trained_model_information - 475] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_C', 'param_dual', 'param_max_iter', 'param_multi_class', 'param_penalty', 'param_solver', 'param_tol', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:26:18 [LogReg.py: hyperparameter_optimization_search - 365] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:26:18 [LogReg.py: calculate_accuracy_score - 297] - Single Accuracy score of model: 0.3
+15-Nov-19 00:26:18 [ShallowLearning_Training.py: <module> - 367] - code completely executed
+15-Nov-19 00:28:27 [ShallowLearning_Training.py: <module> - 300] - main_program start
+15-Nov-19 00:28:27 [ShallowLearning_Training.py: <module> - 310] - main_program start
+15-Nov-19 00:28:27 [ShallowLearning_Training.py: load_dataset - 95] - Load_data
+15-Nov-19 00:28:27 [ShallowLearning_Training.py: load_dataset - 96] - reading pickle data
+15-Nov-19 00:28:27 [ShallowLearning_Training.py: split_dataset - 116] - splitting dataset via sklearn train_test_split function
+15-Nov-19 00:28:27 [Log_BestModel.py: __init__ - 42] - class Initialization
+15-Nov-19 00:28:27 [ShallowLearning_Training.py: <module> - 332] - going to execute
+15-Nov-19 00:28:27 [SVM.py: __init__ - 154] - 
+
+
+
+
+15-Nov-19 00:28:27 [SVM.py: __init__ - 155] - 
+
+
+
+
+15-Nov-19 00:28:27 [SVM.py: __init__ - 156] - =============== Initialize the SVM_class variable ==================
+15-Nov-19 00:28:27 [SVM.py: __init__ - 157] - ===== Working on following data set: ======
+15-Nov-19 00:28:27 [SVM.py: __init__ - 158] - Datasets/TestDataset/_feature_data.csv
+15-Nov-19 00:28:27 [SVM.py: __init__ - 160] -  CurrentDate: 2019-11-15 00-28-27
+15-Nov-19 00:28:27 [SVM.py: __init__ - 161] - 
+
+
+
+
+15-Nov-19 00:28:27 [SVM.py: __init__ - 181] - Initialization Done
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 332] - ------------------------- Random-Search ------------------------
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 339] - 
+
+
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 341] - ------------------------- Hyperparameter_optimization_new ------------------------
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 342] - --------------------------------------------------
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 343] -     Search iteration: 1
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 344] -     CurrentDate: 2019-11-15 00-28-27
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 345] - --------------------------------------------------
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 346] - 
+
+
+15-Nov-19 00:28:27 [SVM.py: hyperparameter_optimization_search - 349] - {'kernel': ['linear'], 'degree': [1], 'C': [0.25]}
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 382] - -----------------All_iterated_models----------------
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 393] - (' mean_score:0.45', ' std_score:0.06772738753623156', " params:{'kernel': 'linear', 'degree': 1, 'C': 0.25}")
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 397] - ----------------Best_Model----------------
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 433] - accuracy_score:32.5,kernel:linear,C:0.25,degree:1,gamma:auto_deprecated,coef0:0.0,tol:0.001,dataset_name_path:Datasets/TestDataset/_feature_data.csv,running_time:2.555316925048828
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 449] - ---------------- Precision_Recall ----------------
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 450] - Precision:[0.45       0.33333333 1.        ],   Recall:[1.  0.5 0. ],   Thresholds:[0 1]
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 485] - ---------------- Grid_scores_on_development_set ----------------
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 492] - [0.45]
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 493] - [0.06772739]
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 499] - Mean:0.45 std:0.13545477507246312 params:{'kernel': 'linear', 'degree': 1, 'C': 0.25}
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 508] -  
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 509] - Detailed classification report:
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 510] - The model is trained on the full development set.
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 511] - The scores are computed on the full evaluation set.
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 512] -  
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 516] -               precision    recall  f1-score   support
+
+           0       0.31      0.18      0.23        22
+           1       0.33      0.50      0.40        18
+
+    accuracy                           0.33        40
+   macro avg       0.32      0.34      0.31        40
+weighted avg       0.32      0.33      0.31        40
+
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 519] - ---------------- Confusion_matrix ----------------
+15-Nov-19 00:28:30 [SVM.py: calculate_score_and_report - 522] - [[ 4 18]
+ [ 9  9]]
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 459] - ----------------  print best parameter after tuning: ----------------
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 460] - {'kernel': 'linear', 'degree': 1, 'C': 0.25}
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 465] - ---------------- print how our best model looks after hyper-parameter tuning: ----------------
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 466] - SVC(C=0.25, cache_size=200, class_weight=None, coef0=0.0,
+    decision_function_shape='ovr', degree=1, gamma='auto_deprecated',
+    kernel='linear', max_iter=-1, probability=False, random_state=None,
+    shrinking=True, tol=0.001, verbose=False)
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 472] - ---------------- optimized_model.cv_results_.keys: ----------------
+15-Nov-19 00:28:30 [SVM.py: process_trained_model_information - 473] - ['mean_fit_time', 'mean_score_time', 'mean_test_score', 'param_C', 'param_degree', 'param_kernel', 'params', 'rank_test_score', 'split0_test_score', 'split1_test_score', 'split2_test_score', 'split3_test_score', 'split4_test_score', 'std_fit_time', 'std_score_time', 'std_test_score']
+15-Nov-19 00:28:30 [SVM.py: hyperparameter_optimization_search - 372] - ---------------- hyperparameter-optimization-end  ----------------
+15-Nov-19 00:28:30 [SVM.py: calculate_accuracy_score - 304] - Single Accuracy score of model: 0.325
+15-Nov-19 00:28:30 [ShallowLearning_Training.py: <module> - 369] - code completely executed

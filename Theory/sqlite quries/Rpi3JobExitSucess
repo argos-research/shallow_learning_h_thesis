@@ -1,0 +1,163 @@
+    CREATE TEMPORARY TABLE JOB_AGGREGATE_INFO AS
+	select
+	Task_ID as Task_ID
+	,Start_Date as Start_Date
+	,End_Date as End_Date
+	,avg(TimeDifference2) as AvgT
+	,max(TimeDifference2) as MaxT
+	,min(TimeDifference2) as MinT
+	from
+	(
+		SELECT
+		*
+		,(Job.End_Date - Job.Start_Date)  as TimeDifference1
+		,CASE WHEN Job.End_Date  < Job.Start_Date THEN (4294967 - Job.Start_Date)+Job.End_Date
+		WHEN Job.End_Date > Job.Start_Date THEN Job.End_Date - Job.Start_Date
+		ELSE (Job.End_Date - Job.Start_Date)
+		END AS TimeDifference2
+		FROM Job
+		WHERE Job.Exit_Value = 'EXIT'
+		order by Task_ID
+	)
+	group by Task_ID
+	order by Task_ID;
+
+
+	drop table TASK_INFO
+
+	CREATE TEMPORARY TABLE TASK_INFO AS
+	SELECT
+	TASK.Task_ID
+	,TASK.Priority as Priority
+	,Task.PKG as PKG
+	,Task.Arg as Arg
+	,(Task.Period/1000) as Period
+	,(Task.CriticalTime/1000) as CriticalTime
+	,Task.Number_of_Jobs as Number_of_Jobs
+	,CASE
+	WHEN JOB_AGGREGATE_INFO.AvgT is not null then ROUND(JOB_AGGREGATE_INFO.AvgT, 2)
+	ELSE -1
+	end as AVG_RUNTIME
+	,CASE
+	WHEN JOB_AGGREGATE_INFO.MaxT is not null then JOB_AGGREGATE_INFO.MaxT
+	ELSE -1
+	end as MAX_RUNTIME
+	,CASE
+	WHEN JOB_AGGREGATE_INFO.MinT is not null then JOB_AGGREGATE_INFO.MinT
+	ELSE -1
+	end as MIN_RUNTIME
+	FROM
+	TASK
+	LEFT JOIN
+	JOB_AGGREGATE_INFO
+	ON
+	TASK.Task_ID = JOB_AGGREGATE_INFO.Task_ID
+	order by TASK.Task_ID;
+
+
+	select *
+	from TASK_INFO;
+
+
+
+
+  -- combining data for task 1
+
+  CREATE TEMPORARY TABLE Task1_INFO AS
+  SELECT TaskSet.Set_ID
+  ,TaskSet.TASK1_ID
+  ,TaskSet.Successful
+  ,TASK_INFO.Priority as Priority1
+  ,TASK_INFO.PKG as PKG1
+  ,TASK_INFO.Arg as Arg1
+  ,(TASK_INFO.Period/1000) as Period1
+  ,(TASK_INFO.CriticalTime/1000) as CriticalTime1
+  ,TASK_INFO.Number_of_Jobs as JobCount1
+  ,TASK_INFO.MAX_RUNTIME as MaxT1
+  ,TASK_INFO.MIN_RUNTIME as MinT1
+  ,TASK_INFO.AVG_RUNTIME as AvgT1
+  FROM
+  TaskSet
+  LEFT JOIN
+  TASK_INFO
+  ON
+  TASKSET.TASK1_ID = TASK_INFO.Task_ID;
+
+
+  SELECT * FROM Task1_INFO Limit 100;
+
+  -- combining data for task 2
+
+  CREATE TEMPORARY TABLE Task2_INFO AS
+  SELECT
+  TaskSet.Set_ID
+  ,TaskSet.TASK2_ID
+  ,TaskSet.Successful
+  ,TASK_INFO.Priority as Priority2
+  ,TASK_INFO.PKG as PKG2
+  ,TASK_INFO.Arg as Arg2
+  ,(TASK_INFO.Period/1000) as Period2
+  ,(TASK_INFO.CriticalTime/1000) as CriticalTime2
+  ,TASK_INFO.Number_of_Jobs as JobCount2
+  ,TASK_INFO.MAX_RUNTIME as MaxT2
+  ,TASK_INFO.MIN_RUNTIME as MinT2
+  ,TASK_INFO.AVG_RUNTIME as AvgT2
+  FROM
+  TaskSet
+  LEFT JOIN
+  TASK_INFO
+  ON
+  TASKSET.TASK2_ID = TASK_INFO.Task_ID;
+
+
+  select count(*)
+  from Task2_INFO;
+
+
+    -- combining data for task 3
+
+  CREATE TEMPORARY TABLE Task3_INFO AS
+  SELECT
+  TaskSet.Set_ID
+  ,TaskSet.TASK3_ID
+  ,TaskSet.Successful
+  ,TASK_INFO.Priority as Priority3
+  ,TASK_INFO.PKG as PKG3
+  ,TASK_INFO.Arg as Arg3
+  ,(TASK_INFO.Period/1000) as Period3
+  ,(TASK_INFO.CriticalTime/1000) as CriticalTime3
+  ,TASK_INFO.Number_of_Jobs as JobCount3
+  ,TASK_INFO.MAX_RUNTIME as MaxT3
+  ,TASK_INFO.MIN_RUNTIME as MinT3
+  ,TASK_INFO.AVG_RUNTIME as AvgT3
+  FROM
+  TaskSet
+  LEFT JOIN
+  TASK_INFO
+  ON
+  TASKSET.TASK3_ID = TASK_INFO.Task_ID;
+
+
+
+	select count(*)
+	from Task3_INFO;
+
+
+ -- Combining all tables
+
+  CREATE TEMPORARY TABLE All_taskset_task_info_rpi3 AS
+  select *
+  from TaskSet
+  LEFT JOIN Task1_INFO
+  ON
+  TaskSet.Set_ID = Task1_INFO.Set_ID
+  LEFT JOIN Task2_INFO
+  ON
+  TaskSet.Set_ID = Task2_INFO.Set_ID
+  LEFT JOIN Task3_INFO
+  ON
+  TaskSet.Set_ID = Task3_INFO.Set_ID;
+
+
+
+
