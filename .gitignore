@@ -1,0 +1,4 @@
+# Project exclude paths
+/venv/
+/DataSet/
+/src/DataProcessing/db/
