@@ -1,4 +1,6 @@
 # Project exclude paths
 /venv/
-/DataSet/
+/Datasets/FinalDatasetBothV6/
+/Datasets/FinalDatasetR3/
+/Datasets/TestDataset/
 /src/DataProcessing/db/

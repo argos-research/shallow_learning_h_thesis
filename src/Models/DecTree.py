@@ -39,32 +39,38 @@ def setup_logger(name, log_file, level=logging.INFO):
 	logger.addHandler(handler)
 	return logger
 
-# Decision Tree
+# Decision Tree class
 class DecTree_class:
+	# parameters of single model
 	splitter = None
 	criterion = None
 	max_depth = None
 	max_features = None
 	min_samples_leaf = None
 	min_samples_split = None
-	model = None
 
+	# single model reference
+	model = None
+	# train and test set
 	X_data = None
 	y_data = None
 	Xtest_data = None
 	ytest_data = None
 	feature_names = None
 	target_names = None
-
+	# acuracy scored and optimized predicted values
 	accuracy_score = None
+	# Single model training parameter
 	y_predicted = None
+	# hyper parameter optimized model
 	optimized_y_predicted = None
 
+	# custom and default logger reference
 	log_BestModel_1 = None
 	logger = None
 	dataset_name_path = None
 
-
+	# hyper parameter optimization array - experimented values
 	parameter_sets= [
 		{
 			'splitter': ['best'],
@@ -113,7 +119,7 @@ class DecTree_class:
 			'min_samples_split': [5, 10, 20, 30, 40, 50, 100, 150, 200, 250, 300, 350, 400, 450]
 		}
 ]
-
+	# constructor - initializes all parameters, logger, dataset. model parameters
 	def __init__(self, Log_BestModel, inX_data, iny_data, inXtest_data, inytest_data, infeature_name, intarget_name, dataset_name_path, in_criterion='gini', in_splitter='best', in_max_depth=None, in_max_features=None, in_min_samples_leaf=1, in_min_samples_split=2):
 		try:
 			logger = setup_logger('DecTreeTraining', path + 'Logging/DecTreeTraining.log')
@@ -155,86 +161,15 @@ class DecTree_class:
 
 	def train_model(self):
 		try:
-			# a = svm.SVC(kernel='rbf', gamma='scale')
-			# a.fit(self.X_data, self.y_data)
+			# Train single model
 			self.model.fit(self.X_data, self.y_data)
-			feature_importances = pd.DataFrame(self.model.feature_importances_, index=self.X_data.columns,
-											   columns=['importance']).sort_values('importance', ascending=False)
-			print(feature_importances)
 		except Exception as e:
 			raise e
 		print("------------------------------ Model trained  ------------------------")
 
-	def training_model_n_feature_importance(self):
-		try:
-			f = open("../Evaluation/DecisionTreeImportance.txt", "a+")
-
-			now = datetime.datetime.now()
-			currentDate = ",CurrentDate:" + now.strftime("%Y-%m-%d %H-%M") + "\n"
-			f.write("\n\n------------------------------ 11111 New training_model_n_feature_importance Execution Started --------------------------------")
-			f.write("\n---------- " + self.dataset_name_path + " -------------")
-			f.write("\n---------- " + str(currentDate) + " -------------")
-			f.write("\n---------- " + str(self.dataset_name_path) + " -------------")
-
-
-			# accuracy_score: 98.0881813698838, splitter: best, criterion: entropy, max_depth: 40, max_features: auto, min_samples_leaf: 6, min_samples_split: 2, dataset_name_path: Datasets / FinalDatasetR3 / r3__feature_data.csv, running_time: 9.697100400924683
-			# # R3 99.3032988986812
-			# in_criterion='entropy'
-			# in_max_depth =40
-			# in_min_samples_leaf=6
-			# in_min_samples_split =2
-			# in_max_features ='auto'
-			# in_splitter ='best'
-
-			# self.model = tree.DecisionTreeClassifier(criterion=in_criterion, splitter=in_splitter,
-			# 										 max_depth=in_max_depth, max_features=in_max_features,
-			# 										 min_samples_leaf=in_min_samples_leaf,
-			# 										 min_samples_split=in_min_samples_split)
-
-			# accuracy_score: 99.3032988986812, splitter: best, criterion: gini, max_depth: None, max_features: None, min_samples_leaf: 1, min_samples_split: 2, dataset_name_path: Datasets / FinalDatasetR3 / r3__feature_data.csv, running_time: 10.557979345321655
-			# # R3 99.3032988986812
-			in_criterion='gini'
-			in_max_depth =None
-			in_min_samples_leaf=1
-			in_min_samples_split =2
-			in_max_features =None
-			in_splitter ='best'
-			self.model = tree.DecisionTreeClassifier(criterion=in_criterion, splitter=in_splitter,
-													 max_depth=in_max_depth, max_features=in_max_features,
-													 min_samples_leaf=in_min_samples_leaf,
-													 min_samples_split=in_min_samples_split)
-
-			self.model .fit(self.X_data, self.y_data)
-			self.model .score(self.Xtest_data, self.ytest_data)
-
-			feature_importances = pd.DataFrame(self.model.feature_importances_, index=self.X_data.columns,
-											   columns=['importance']).sort_values('importance', ascending=False)
-			print(feature_importances)
-			f.write(feature_importances.to_string())
-
-			self.predict()
-			optimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.y_predicted)
-			ac_score = optimized_accuracy_score * 100
-			print("\nac_score")
-			print(ac_score)
-
-			f.write("\nac_score")
-			f.write(str(ac_score))
-
-			f.write("\nfeature_names")
-			f.write(str(self.feature_names))
-
-
-		except Exception as e:
-			self.logger.error("Exception occurred in train_model", exc_info=True)
-			raise e
-		f.write("\n\n Execution ended")
-		f.close()
-		self.logger.info('Single Model trained')
-		print("------------------------------ Model trained  --------------------------------")
-
 	def predict(self):
 		try:
+			# Predict score of single model
 			self.y_predicted = self.model.predict(self.Xtest_data)
 		except Exception as e:
 			raise e
@@ -242,6 +177,7 @@ class DecTree_class:
 
 	def calculate_accuracy_score(self):
 		try:
+			# calculate accuracy score
 			print("--------------------------- Accuracy score of model -------------------------------------------")
 			self.accuracy_score = metrics.accuracy_score(self.ytest_data, self.y_predicted)
 			print(self.accuracy_score)
@@ -251,6 +187,7 @@ class DecTree_class:
 
 	def classification_report(self):
 		try:
+			# classification_report - contains f1, support recall values etc.
 			print("--------------------------- classification report --------------------------------------------")
 			print(metrics.classification_report(self.ytest_data, self.y_predicted, target_names=self.target_names))
 		except Exception as e:
@@ -259,12 +196,18 @@ class DecTree_class:
 
 	def confusion_matrix(self):
 		try:
+			# confusion matrix
 			print("--------------------------- confusion matrix -------------------------------------------")
 			print(metrics.confusion_matrix(self.ytest_data, self.y_predicted))
 		except Exception as e:
 			raise e
 
 
+	# hyper parameter optimzation gridSearch -true- if want to use grid search otherwise random search is used.
+	# number of iteration represents the no. of total model trained in random search
+	# in_cv represents the different type k-fold classs.
+	# in_number_jobs represenets the no of paraletl job
+	# verbosity define the no. of output you want tp recieve on console during training.
 	def hyperparameter_optimization_search(self, gridSearch=False, in_iter=20, in_random_state=77, in_cv=5,
 										   in_num_jobs=-1, in_verbosity=200):
 		try:
@@ -275,6 +218,7 @@ class DecTree_class:
 			else:
 				self.logger.info('------------------------- Random-Search ------------------------')
 
+			# hyper parameter array is accessed and iterated over.
 			for hyperparameters in self.parameter_sets:
 
 				i += 1
@@ -294,7 +238,7 @@ class DecTree_class:
 				print(hyperparameters)
 				start = time.time()
 				optimized_model = None
-				if (gridSearch):
+				if (gridSearch): # model is initialized here
 					optimized_model = GridSearchCV(self.model, hyperparameters, cv=in_cv, n_jobs=in_num_jobs,
 												   verbose=in_verbosity)
 				else:
@@ -304,14 +248,18 @@ class DecTree_class:
 														 verbose=in_verbosity, random_state=in_random_state,
 														 n_jobs=in_num_jobs)
 
+				# model is trained
 				optimized_model.fit(self.X_data, self.y_data)
 
+				# accuracy score of model is predictred
 				self.optimized_y_predicted = optimized_model.predict(self.Xtest_data)
 
 				end = time.time()
 				running_time = end - start
 				print("Total optimization time in s:", str(running_time))
 
+				# trained model is saved in custom and defauot logging files
+				# and different evaluation measures are also presented
 				self.process_trained_model_information(optimized_model, running_time)
 
 				print("*********----------------- hyperparameter optimization end  ---------------*********")
@@ -321,6 +269,7 @@ class DecTree_class:
 			self.logger.error("Exception occurred in hyperparameter_optimization", exc_info=True)
 			raise e
 
+	# saving the optimized model accuracy and other scores for evaluation later
 	def process_trained_model_information(self, optimized_model, running_time):
 
 		try:
@@ -345,6 +294,7 @@ class DecTree_class:
 
 			optimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)
 
+			# get the best results
 			split_value = optimized_model.best_estimator_.get_params()[split_str]
 			crit_value = optimized_model.best_estimator_.get_params()[crit_str]
 			maxDept_value = optimized_model.best_estimator_.get_params()[maxDept_str]
@@ -424,6 +374,7 @@ class DecTree_class:
 
 
 
+	# calculated for hyperparameter optimization
 	def calculate_score_and_report(self, Best_Model):
 
 		self.logger.info("---------------- Grid_scores_on_development_set ----------------")
@@ -436,6 +387,7 @@ class DecTree_class:
 		self.logger.info(means)
 		self.logger.info(stds)
 
+		# print score for each intermediary model
 		for mean, std, params in zip(means, stds, Best_Model.cv_results_['params']):
 			print("%0.3f (+/-%0.03f) for %r"
 				  % (mean, std * 2, params))
@@ -455,6 +407,7 @@ class DecTree_class:
 		self.logger.info("The scores are computed on the full evaluation set.")
 		self.logger.info(" ")
 
+		#  calculated the confusion matrix score below
 		# y_true, y_pred = self.ytest_data, Best_Model.predict(self.Xtest_data)
 		print(metrics.classification_report(self.ytest_data, self.optimized_y_predicted))
 		self.logger.info(metrics.classification_report(self.ytest_data, self.optimized_y_predicted))
@@ -470,6 +423,7 @@ class DecTree_class:
 		return None
 
 
+	# displaying list of all the best models. saved models from custom file
 	def display_all_bestModel(self):
 		print("--------------------------- read_DecTree_BestModel display all bestModel -------------------------------------------")
 		self.logger.info("--------------------------- read_DecTree_BestModel display all bestModel -------------------------------------------")
@@ -497,6 +451,73 @@ class DecTree_class:
 
 		return None
 
+
+	# helping function for generating feature importance
+	def training_model_n_feature_importance(self):
+		try:
+			f = open("../Evaluation/DecisionTreeImportance.txt", "a+")
+
+			now = datetime.datetime.now()
+			currentDate = ",CurrentDate:" + now.strftime("%Y-%m-%d %H-%M") + "\n"
+			f.write("\n\n------------------------------ 11111 New training_model_n_feature_importance Execution Started --------------------------------")
+			f.write("\n---------- " + self.dataset_name_path + " -------------")
+			f.write("\n---------- " + str(currentDate) + " -------------")
+			f.write("\n---------- " + str(self.dataset_name_path) + " -------------")
+
+
+			# accuracy_score: 98.0881813698838, splitter: best, criterion: entropy, max_depth: 40, max_features: auto, min_samples_leaf: 6, min_samples_split: 2, dataset_name_path: Datasets / FinalDatasetR3 / r3__feature_data.csv, running_time: 9.697100400924683
+			# # R3 99.3032988986812
+			# in_criterion='entropy'
+			# in_max_depth =40
+			# in_min_samples_leaf=6
+			# in_min_samples_split =2
+			# in_max_features ='auto'
+			# in_splitter ='best'
+
+			# self.model = tree.DecisionTreeClassifier(criterion=in_criterion, splitter=in_splitter,
+			# 										 max_depth=in_max_depth, max_features=in_max_features,
+			# 										 min_samples_leaf=in_min_samples_leaf,
+			# 										 min_samples_split=in_min_samples_split)
+
+			# accuracy_score: 99.3032988986812, splitter: best, criterion: gini, max_depth: None, max_features: None, min_samples_leaf: 1, min_samples_split: 2, dataset_name_path: Datasets / FinalDatasetR3 / r3__feature_data.csv, running_time: 10.557979345321655
+			# # R3 99.3032988986812
+			in_criterion='gini'
+			in_max_depth =None
+			in_min_samples_leaf=1
+			in_min_samples_split =2
+			in_max_features =None
+			in_splitter ='best'
+			self.model = tree.DecisionTreeClassifier(criterion=in_criterion, splitter=in_splitter,
+													 max_depth=in_max_depth, max_features=in_max_features,
+													 min_samples_leaf=in_min_samples_leaf,
+													 min_samples_split=in_min_samples_split)
+
+			self.model .fit(self.X_data, self.y_data)
+			self.model .score(self.Xtest_data, self.ytest_data)
+
+			feature_importances = pd.DataFrame(self.model.feature_importances_, index=self.X_data.columns,
+											   columns=['importance']).sort_values('importance', ascending=False)
+			print(feature_importances)
+			f.write(feature_importances.to_string())
+
+			self.predict()
+			optimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.y_predicted)
+			ac_score = optimized_accuracy_score * 100
+			print("\nac_score")
+			print(ac_score)
+
+			f.write("\nac_score")
+			f.write(str(ac_score))
+
+			f.write("\nfeature_names")
+			f.write(str(self.feature_names))
+		except Exception as e:
+			self.logger.error("Exception occurred in train_model", exc_info=True)
+			raise e
+		f.write("\n\n Execution ended")
+		f.close()
+		self.logger.info('Single Model trained')
+		print("------------------------------ Model trained  --------------------------------")
 
 
 

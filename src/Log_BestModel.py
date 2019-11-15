@@ -47,6 +47,7 @@ class Log_BestModel:
 			raise e
 		return None
 
+	# save best parameters in custom logging file - this function is usually called during the hyperparameter optimization
 	def save_Random_Forest_BestModel(self,parammeters):
 		try:
 			now = datetime.datetime.now()
@@ -62,6 +63,7 @@ class Log_BestModel:
 			raise e
 		return None
 
+	# read best parameters from custom logging file
 	def read_Random_Forest_BestModel(self):
 		try:
 			BestModel_list = {}
@@ -116,6 +118,7 @@ class Log_BestModel:
 		return None
 
 
+	# save best parameters in custom logging file - this function is usually called during the hyperparameter optimization
 	def save_support_vector_machine_BestModel(self,parammeters):
 		try:
 			now = datetime.datetime.now()
@@ -131,6 +134,7 @@ class Log_BestModel:
 			raise e
 		return None
 
+	# read best parameters from custom logging file
 	def read_support_vector_machine_BestModel(self):
 		try:
 			BestModel_list = {}
@@ -183,6 +187,7 @@ class Log_BestModel:
 
 
 
+	# save best parameters in custom logging file - this function is usually called during the hyperparameter optimization
 	def save_knn_BestModel(self,parammeters):
 		try:
 			now = datetime.datetime.now()
@@ -199,6 +204,7 @@ class Log_BestModel:
 		return None
 
 
+	# read best parameters from custom logging file
 	def read_knn_BestModel(self):
 		try:
 			BestModel_list = {}
@@ -245,6 +251,7 @@ class Log_BestModel:
 
 
 
+	# save best parameters in custom logging file - this function is usually called during the hyperparameter optimization
 	def save_logReg_BestModel(self,parammeters):
 		try:
 			now = datetime.datetime.now()
@@ -262,6 +269,7 @@ class Log_BestModel:
 
 
 
+	# read best parameters from custom logging file
 	def read_logReg_BestModel(self):
 		try:
 			BestModel_list = {}
@@ -320,6 +328,7 @@ class Log_BestModel:
 
 
 
+	# save best parameters in custom logging file - this function is usually called during the hyperparameter optimization
 	def save_DecTree_BestModel(self,parammeters):
 		try:
 			now = datetime.datetime.now()
@@ -335,7 +344,7 @@ class Log_BestModel:
 			raise e
 		return None
 
-
+	# read best parameters from custom logging file
 	def read_DecTree_BestModel(self):
 		try:
 			BestModel_list = {}

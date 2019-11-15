@@ -41,12 +41,14 @@ def setup_logger(name, log_file, level=logging.INFO):
 
 # K nearest neighbor classification
 class KNN_class:
+	# parameters of single model
 	n_neighbors = None
 	weights = None
 	algorithm = None
 	p = None
+	# single model reference
 	model = None
-
+	# train and test set
 	X_data = None
 	y_data = None
 	Xtest_data = None
@@ -54,15 +56,22 @@ class KNN_class:
 	feature_names = None
 	target_names = None
 
+	# acuracy scored and optimized predicted values
 	accuracy_score = None
+	# Single model training parameter
 	y_predicted = None
+	# hyper parameter optimized model
 	optimized_y_predicted = None
 
+	# custom and default logger reference
 	log_BestModel_1 = None
 	logger = None
 	dataset_name_path = None
 
 
+	# hyper parameter optimization array - experimented values
+	# values were broken down into smaller parameter candidates because
+	# otherwise it gives excessive memory usage error for larger dataset
 	parameter_sets = [
 		{
 			'n_neighbors': [25],
@@ -145,33 +154,69 @@ class KNN_class:
 			'leaf_size': [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
 			'p': [1, 2, 3]
 		}
-		# {
-		# 	'n_neighbors': [774, 1291, 2154, 3593, 5994, 10000],
-		# 	'weights': ['uniform', 'distance'],
-		# 	'algorithm': ['ball_tree', 'kd_tree', 'brute'],
-		# 	'leaf_size': [4, 32, 64, 256, 512],
-		# 	'p': [1, 2, 3]
-		# },
-		# {
-		# 	'n_neighbors': [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
-		# 	'weights': ['uniform', 'distance'],
-		# 	'algorithm': ['ball_tree', 'kd_tree', 'brute'],
-		# 	'n_jobs': [-1],
-		# 	'leaf_size': [1, 2, 4, 8, 16, 32, 128, 256],
-		# 	'p': [1, 2, 3]
-		# },
-		# {
-		# 	'n_neighbors': [100, 166, 278, 464, 774, 1291, 2154, 3593, 5994, 10000],
-		# 	'weights': ['uniform', 'distance'],
-		# 	'algorithm': ['ball_tree', 'kd_tree', 'brute'],
-		# 	'n_jobs': [-1],
-		# 	'leaf_size': [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
-		# 	'p': [1, 2, 3]
-		# }
-
 	]
 
+	# all the possible values for training
+	# but this works only for very small dataset
+	# but gives excessive memory usage error for larger dataset
+	# which is why parameter values had to break into smaller arrays for execution.
+	# parameter_sets= [
+	# 	{
+	# 		'n_neighbors': [1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+	# 		'weights': ['uniform', 'distance'],
+	# 		'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+	# 		'n_jobs': [-1],
+	# 		'leaf_size': [1, 2, 4, 8, 16, 32, 128, 256],
+	# 		'p': [1, 2, 3]
+	# 	},
+	# 	{
+	# 		'n_neighbors': [12, 16, 20, 23, 25],
+	# 		'weights': ['uniform', 'distance'],
+	# 		'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+	# 		'leaf_size': [5, 8, 32, 64, 256, 512],
+	# 		'p': [1, 2, 3]
+	# 	},
+	# 	{
+	# 		'n_neighbors': [60, 75, 90, 100, 127],
+	# 		'weights': ['uniform', 'distance'],
+	# 		'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+	# 		'leaf_size': [4, 16, 64, 128, 512],
+	# 		'p': [1, 2, 3]
+	# 	},
+	# 	{
+	# 		'n_neighbors': [774, 1291, 2154, 3593, 5994, 10000],
+	# 		'weights': ['uniform', 'distance'],
+	# 		'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+	# 		'leaf_size': [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+	# 		'p': [1, 2, 3]
+	# 	},
+	# 	{
+	# 		'n_neighbors': [100, 166, 278, 464],
+	# 		'weights': ['uniform', 'distance'],
+	# 		'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+	# 		'n_jobs': [-1],
+	# 		'leaf_size': [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+	# 		'p': [1, 2, 3]
+	# 	},
+	# 	{
+	# 		'n_neighbors': [6000],
+	# 		'weights': ['uniform', 'distance'],
+	# 		'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+	# 		'n_jobs': [-1],
+	# 		'leaf_size': [ 32, 64, 256, 512],
+	# 		'p': [1, 2, 3]
+	# 	},
+	# 	{
+	# 		'n_neighbors': [7000],
+	# 		'weights': ['uniform', 'distance'],
+	# 		'algorithm': ['ball_tree', 'kd_tree', 'brute'],
+	# 		'leaf_size': [ 256, 512],
+	# 		'p': [1, 2, 3]
+	# 	}
+	# ]
 
+
+	# constructor - initializes all parameters, logger, dataset. model parameters
 	def __init__(self, Log_BestModel, inX_data, iny_data, inXtest_data, inytest_data, infeature_name, intarget_name, dataset_name_path, in_weights='uniform', in_neighbors=10, in_algorithm='auto'):
 		try:
 			logger = setup_logger('KNNTraining', path + 'Logging/KNNTraining.log')
@@ -188,6 +233,7 @@ class KNN_class:
 			self.logger.info(currentDate)
 			self.logger.info("\n\n\n\n")
 
+			# Normalize dataset
 			scaling = MinMaxScaler(feature_range=(-1, 1)).fit(inX_data)
 			inX_data = scaling.transform(inX_data)
 			inXtest_data = scaling.transform(inXtest_data)
@@ -217,6 +263,7 @@ class KNN_class:
 
 	def train_model(self):
 		try:
+			# Train single model
 			self.model.fit(self.X_data, self.y_data)
 
 		except Exception as e:
@@ -225,6 +272,7 @@ class KNN_class:
 
 	def predict(self):
 		try:
+			# Predict score of single model
 			self.y_predicted = self.model.predict(self.Xtest_data)
 		except Exception as e:
 			raise e
@@ -232,6 +280,7 @@ class KNN_class:
 
 	def calculate_accuracy_score(self):
 		try:
+			# calculate accuracy score
 			print("--------------------------- Accuracy score of model -------------------------------------------")
 			self.accuracy_score = metrics.accuracy_score(self.ytest_data, self.y_predicted)
 			print(self.accuracy_score)
@@ -242,6 +291,7 @@ class KNN_class:
 
 	def classification_report(self):
 		try:
+			# classification_report - contains f1, support recall values etc.
 			print("--------------------------- classification report --------------------------------------------")
 			print(metrics.classification_report(self.ytest_data, self.y_predicted, target_names=self.target_names))
 		except Exception as e:
@@ -250,6 +300,7 @@ class KNN_class:
 
 	def confusion_matrix(self):
 		try:
+			# confusion matrix
 			print("--------------------------- confusion matrix -------------------------------------------")
 			print(metrics.confusion_matrix(self.ytest_data, self.y_predicted))
 		except Exception as e:
@@ -257,6 +308,11 @@ class KNN_class:
 
 
 
+	# hyper parameter optimzation gridSearch -true- if want to use grid search otherwise random search is used.
+	# number of iteration represents the no. of total model trained in random search
+	# in_cv represents the different type k-fold classs.
+	# in_number_jobs represenets the no of paraletl job
+	# verbosity define the no. of output you want tp recieve on console during training.
 	def hyperparameter_optimization_search(self,gridSearch=False, in_iter = 20, in_random_state = 77, in_cv=5, in_num_jobs=-1, in_verbosity=200):
 		try:
 			i = 0
@@ -265,6 +321,7 @@ class KNN_class:
 			else:
 				self.logger.info('------------------------- Random-Search ------------------------')
 
+			# hyper parameter array is accessed and iterated over.
 			for hyperparameters in self.parameter_sets:
 
 				i += 1
@@ -284,7 +341,7 @@ class KNN_class:
 				print(hyperparameters)
 				start = time.time()
 				optimized_model = None
-				if (gridSearch):
+				if (gridSearch): # model is initialized here
 					optimized_model = GridSearchCV(self.model, hyperparameters, cv=in_cv, n_jobs=in_num_jobs,
 											   verbose=in_verbosity)
 				else:
@@ -292,14 +349,18 @@ class KNN_class:
 											 cv=in_cv,
 											 verbose=in_verbosity, random_state=in_random_state, n_jobs=in_num_jobs)
 
+				# model is trained
 				optimized_model.fit(self.X_data, self.y_data)
 
+				# accuracy score of model is predictred
 				self.optimized_y_predicted = optimized_model.predict(self.Xtest_data)
 
 				end = time.time()
 				running_time = end - start
 				print("Total optimization time in s:", str(running_time))
 
+				# trained model is saved in custom and defauot logging files
+				# and different evaluation measures are also presented
 				self.process_trained_model_information(optimized_model,running_time)
 
 				print("*********----------------- hyperparameter optimization end  ---------------*********")
@@ -312,6 +373,7 @@ class KNN_class:
 
 
 
+	# saving the optimized model accuracy and other scores for evaluation later
 	def process_trained_model_information(self, optimized_model, running_time):
 		try:
 				self.logger.info('-----------------All_iterated_models----------------')
@@ -335,7 +397,7 @@ class KNN_class:
 				print()
 
 				optimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)
-
+				# get the best results
 				k_value = optimized_model.best_estimator_.get_params()[k_str]
 				w_value = optimized_model.best_estimator_.get_params()[weigh_str]
 				algo_value = optimized_model.best_estimator_.get_params()[algo_str]
@@ -413,10 +475,9 @@ class KNN_class:
 
 		return None
 
+	# calculated for hyperparameter optimization
 	def calculate_score_and_report(self, Best_Model):
-
 		self.logger.info("---------------- Grid_scores_on_development_set ----------------")
-
 		print("------------------------------------------------------------------")
 		print("Grid scores on development set:")
 		print()
@@ -424,7 +485,7 @@ class KNN_class:
 		stds = Best_Model.cv_results_['std_test_score']
 		self.logger.info(means)
 		self.logger.info(stds)
-
+		# print score for each intermediary model
 		for mean, std, params in zip(means, stds, Best_Model.cv_results_['params']):
 			print("%0.3f (+/-%0.03f) for %r"
 				  % (mean, std * 2, params))
@@ -444,6 +505,7 @@ class KNN_class:
 		self.logger.info("The scores are computed on the full evaluation set.")
 		self.logger.info(" ")
 
+		#  calculated the confusion matrix score below
 		# y_true, y_pred = self.ytest_data, Best_Model.predict(self.Xtest_data)
 		print(metrics.classification_report(self.ytest_data, self.optimized_y_predicted))
 		self.logger.info(metrics.classification_report(self.ytest_data, self.optimized_y_predicted))
@@ -459,6 +521,7 @@ class KNN_class:
 		print("------------------------------------------------------------------")
 		return None
 
+	# displaying list of all the best models. saved models from custom file
 	def display_all_bestModel(self):
 		print("--------------------------- display all bestModel -------------------------------------------")
 		try:

@@ -40,17 +40,18 @@ def setup_logger(name, log_file, level=logging.INFO):
 	return logger
 
 
-# Support vector machine
+# Support vector machine class
 class SVM_class:
+	# parameters of single model
 	kernel = None
 	C = None
 	degree = None
 	gamma = None
 	coef0 = None
 	Tol = None
-
+	# single model reference
 	model = None
-
+	# train and test set
 	X_data = None
 	y_data = None
 	Xtest_data = None
@@ -58,14 +59,20 @@ class SVM_class:
 	feature_names = None
 	target_names = None
 
+	# acuracy scored and optimized predicted values
 	accuracy_score = None
+	# Single model training parameter
 	y_predicted = None
+	# hyper parameter optimized model
 	optimized_y_predicted = None
 
+	# custom and default logger reference
 	log_BestModel_1 = None
 	logger = None
 	dataset_name_path = None
 
+
+	# hyper parameter optimization array - experimented values
 	parameter_sets = [
 		{'kernel': ['linear'],
 		 'degree': [1],
@@ -116,7 +123,10 @@ class SVM_class:
 		 'coef0': [0.0, 2, 3]}
 	]
 
-
+	# all the possible values
+	# can only b ran for very small dataset
+	# but gives excessive memory usage error for larger dataset
+	# which is why parameter values had to break into smaller arrays for execution.
 	# parameter_sets= [
 	# 	{'kernel': ['linear'],
 	# 	 'C': [0.1, 0.25, 0.5, 0.75, 1, 1.75, 2, 5, 10, 100, 200, 400, 600, 800, 1000],
@@ -144,7 +154,7 @@ class SVM_class:
 	# 	 'tol': [0.001, 0.1, 0.5, 0.75, 1, 1.5, 1.75, 2, 2.50, 10]}
 	# ]
 
-
+	# constructor - initializes all parameters, logger, dataset. model parameters
 	def __init__(self, Log_BestModel, inX_data, iny_data, inXtest_data, inytest_data, infeature_name, intarget_name, dataset_name_path, kernel="linear"):
 		try:
 			logger = setup_logger('SVMTraining', path + 'Logging/SVMTraining.log')
@@ -159,7 +169,7 @@ class SVM_class:
 			currentDate = " CurrentDate: " + datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")
 			self.logger.info(currentDate)
 			self.logger.info("\n\n\n\n")
-
+			# Normalize dataset
 			scaling = MinMaxScaler(feature_range=(-1, 1)).fit(inX_data)
 			inX_data = scaling.transform(inX_data)
 			inXtest_data = scaling.transform(inXtest_data)
@@ -184,7 +194,7 @@ class SVM_class:
 			self.logger.error("Exception occurred in __init__", exc_info=True)
 			raise e
 
-
+	# helping code for generating ROC graph
 	def generating_roc_value(self):
 		try:
 			# # 92.19467169066976% R3
@@ -282,7 +292,8 @@ class SVM_class:
 
 	def train_model(self):
 		try:
-				self.model.fit(self.X_data, self.y_data)
+			# Train single model
+			self.model.fit(self.X_data, self.y_data)
 		except Exception as e:
 			self.logger.error("Exception occurred in train_model", exc_info=True)
 			raise e
@@ -290,6 +301,7 @@ class SVM_class:
 
 	def predict(self):
 		try:
+			# Predict score of single model
 			self.y_predicted = self.model.predict(self.Xtest_data)
 		except Exception as e:
 			self.logger.error("Exception occurred in predict", exc_info=True)
@@ -298,6 +310,7 @@ class SVM_class:
 
 	def calculate_accuracy_score(self):
 		try:
+			# calculate accuracy score
 			print("--------------------------- Accuracy score of model -------------------------------------------")
 			self.accuracy_score = metrics.accuracy_score(self.ytest_data, self.y_predicted)
 			print(self.accuracy_score)
@@ -308,6 +321,7 @@ class SVM_class:
 
 	def classification_report(self):
 		try:
+			# classification_report - contains f1, support recall values etc.
 			print("--------------------------- classification report --------------------------------------------")
 			print(metrics.classification_report(self.ytest_data, self.y_predicted, target_names=self.target_names))
 		except Exception as e:
@@ -316,12 +330,18 @@ class SVM_class:
 
 	def confusion_matrix(self):
 		try:
+			# confusion matrix
 			print("--------------------------- confusion matrix -------------------------------------------")
 			print(metrics.confusion_matrix(self.ytest_data, self.y_predicted))
 		except Exception as e:
 			self.logger.error("Exception occurred in confusion_matrix", exc_info=True)
 			raise e
 
+	# hyper parameter optimzation gridSearch -true- if want to use grid search otherwise random search is used.
+	# number of iteration represents the no. of total model trained in random search
+	# in_cv represents the different type k-fold classs.
+	# in_number_jobs represenets the no of paraletl job
+	# verbosity define the no. of output you want tp recieve on console during training.
 	def hyperparameter_optimization_search(self,gridSearch=False, in_iter = 20, in_random_state = 77, in_cv=5, in_num_jobs=-1, in_verbosity=200):
 		try:
 
@@ -330,7 +350,7 @@ class SVM_class:
 				self.logger.info('------------------------- Grid-Search ------------------------')
 			else:
 				self.logger.info('------------------------- Random-Search ------------------------')
-
+			# hyper parameter array is accessed and iterated over.
 			for hyperparameters in self.parameter_sets:
 
 				i += 1
@@ -350,7 +370,7 @@ class SVM_class:
 				print(hyperparameters)
 				start = time.time()
 				optimized_model = None
-				if (gridSearch):
+				if (gridSearch): # model is initialized here
 					optimized_model = GridSearchCV(self.model, hyperparameters, cv=in_cv, n_jobs=in_num_jobs,
 											   verbose=in_verbosity)
 				else:
@@ -358,14 +378,18 @@ class SVM_class:
 											 cv=in_cv,
 											 verbose=in_verbosity, random_state=in_random_state, n_jobs=in_num_jobs)
 
+				# model is trained
 				optimized_model.fit(self.X_data, self.y_data)
 
+				# accuracy score of model is predictred
 				self.optimized_y_predicted = optimized_model.predict(self.Xtest_data)
 
 				end = time.time()
 				running_time = end - start
 				print("Total optimization time in s:", str(running_time))
 
+				# trained model is saved in custom and defauot logging files
+				# and different evaluation measures are also presented
 				self.process_trained_model_information(optimized_model,running_time)
 
 				print("*********----------------- hyperparameter optimization end  ---------------*********")
@@ -375,7 +399,7 @@ class SVM_class:
 			self.logger.error("Exception occurred in hyperparameter_optimization", exc_info=True)
 			raise e
 
-
+	# saving the optimized model accuracy and other scores for evaluation later
 	def process_trained_model_information(self, optimized_model, running_time):
 
 		try:
@@ -400,7 +424,7 @@ class SVM_class:
 				print()
 
 				optimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)
-
+				# get the best results
 				ker = optimized_model.best_estimator_.get_params()[ker_str]
 				cri = optimized_model.best_estimator_.get_params()[c_str]
 				degree = optimized_model.best_estimator_.get_params()[degree_str]
@@ -431,7 +455,7 @@ class SVM_class:
 							 + "," + runTime_str + ":" + str(running_time)
 
 				self.logger.info(parameters)
-				self.log_BestModel_1.save_support_vector_machine_BestModel(parameters)
+				self.log_BestModel_1.save_support_vector_machine_BestModel(parameters) # save in custom logger
 
 				# precision_recall_curve
 				print("*********----------------- precision_recall_curve ---------------*********")
@@ -471,15 +495,12 @@ class SVM_class:
 				print(sorted(optimized_model.cv_results_.keys()))
 				self.logger.info("---------------- optimized_model.cv_results_.keys: ----------------")
 				self.logger.info(sorted(optimized_model.cv_results_.keys()))
-
-
-
 		except Exception as e:
 			self.logger.error("Exception occurred in hyperparameter_optimization", exc_info=True)
 			raise e
 		return None
 
-
+	# calculated for hyperparameter optimization
 	def calculate_score_and_report(self, Best_Model):
 
 		self.logger.info("---------------- Grid_scores_on_development_set ----------------")
@@ -491,7 +512,7 @@ class SVM_class:
 		stds = Best_Model.cv_results_['std_test_score']
 		self.logger.info(means)
 		self.logger.info(stds)
-
+		# print score for each intermediary model
 		for mean, std, params in zip(means, stds, Best_Model.cv_results_['params']):
 			print("%0.3f (+/-%0.03f) for %r"
 				  % (mean, std * 2, params))
@@ -505,6 +526,7 @@ class SVM_class:
 		print("The scores are computed on the full evaluation set.")
 		print()
 
+		#  calculated the confusion matrix score below
 		self.logger.info(" ")
 		self.logger.info("Detailed classification report:")
 		self.logger.info("The model is trained on the full development set.")
@@ -526,7 +548,7 @@ class SVM_class:
 		print("------------------------------------------------------------------")
 		return None
 
-
+	# displaying list of all the best models. saved models from custom file
 	def display_all_bestModel(self):
 		print("--------------------------- display all bestModel -------------------------------------------")
 		try:

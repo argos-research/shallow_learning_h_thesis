@@ -5,6 +5,8 @@ import logging
 import time
 
 
+
+
 # -----------------------------
 path = '../../'
 start_time = 0
@@ -127,12 +129,16 @@ Successful = {'NOTEXECUTABLE': [0],
               'EXECUTABLE': [1]
               }
 
-
-
-
-
+# --------------------------------------------------------------------------------
+# SQL queries of PV6 and R3 Dataset differs in a way that
+# panda_v6 database already have average, maximum and minimum job runtime in tassk table
+# for rasp3_final average, maximum and minimum job runtime is being calculated explicitly
+# ---------------------------------------------------------------------------------------
 
 # panda_v6both SQL Quries
+# query for extracting all the job information
+#this table is never used because panda_v6 already contains the average, Min, Max time for the job, and
+# -there is no other information from jobs table that we are considering for training
 sql_job_table_PV6 = ('CREATE TEMPORARY TABLE JOB_INFO AS '
 				 'SELECT '
 				 'Set_ID '
@@ -148,6 +154,7 @@ sql_job_table_PV6 = ('CREATE TEMPORARY TABLE JOB_INFO AS '
 sql_select_job_table_PV6 = ('SELECT * '
 						'FROM JOB_INFO')
 
+# query for extracting all the task information for task2 of taskset array
 sql_task1_table_PV6 = ('CREATE TEMPORARY TABLE Task1_INFO AS '
 					   'SELECT TaskSet.Set_ID '
 					   ',TaskSet.TASK1_ID '
@@ -175,6 +182,7 @@ sql_task1_table_PV6 = ('CREATE TEMPORARY TABLE Task1_INFO AS '
 sql_select_task1_table_PV6 = ('SELECT * '
 						'FROM Task1_INFO')
 
+# query for extracting all the task information for task2 of taskset array
 sql_task2_table_PV6 = ('CREATE TEMPORARY TABLE Task2_INFO AS '
 					   'SELECT '
 					   'TaskSet.Set_ID '
@@ -204,6 +212,7 @@ sql_select_task2_table_PV6 = ('SELECT * '
 
 
 
+# query for extracting all the task information for task3 of taskset array
 sql_task3_table_PV6 = ('CREATE TEMPORARY TABLE Task3_INFO AS '
 					   'SELECT '
 					   'TaskSet.Set_ID '
@@ -234,6 +243,8 @@ sql_select_task3_table_PV6 = ('SELECT * '
 
 
 # Raspberry pi 3 SQL Quries
+# query for extracting all the job information along with the average, min, max runtime values calculation
+#over flow of end date is also handled in this query
 sql_job_table_R3 = ('CREATE TEMPORARY TABLE JOB_INFO AS '
 				 'SELECT '
 				 'Set_ID '
@@ -261,6 +272,7 @@ sql_job_table_R3 = ('CREATE TEMPORARY TABLE JOB_INFO AS '
 sql_select_job_table_R3 = ('SELECT * '
 						'FROM JOB_INFO')
 
+# query for extracting all the task information for task1 of taskset array
 sql_task1_table_R3 = ('CREATE TEMPORARY TABLE Task1_INFO AS '
 				   'SELECT TaskSet.Set_ID '
 				   ',TaskSet.TASK1_ID '
@@ -294,6 +306,7 @@ sql_select_task1_table_R3 = ('SELECT * '
 
 
 
+# query for extracting all the task information for task2 of taskset array
 sql_task2_table_R3 = ('CREATE TEMPORARY TABLE Task2_INFO AS '
 				   'SELECT '
 				   'TaskSet.Set_ID '
@@ -326,6 +339,7 @@ sql_select_task2_table_R3 = ('SELECT * '
 
 
 
+# query for extracting all the task information for task3 of taskset array
 sql_task3_table_R3 = ('CREATE TEMPORARY TABLE Task3_INFO AS '
 				   'SELECT '
 				   'TaskSet.Set_ID '
@@ -387,8 +401,7 @@ def endTimer(message,sTime):
 	print("--- %s seconds ---" % (time.time() - sTime))
 	return
 
-# Functions for generating the dataset as csv Files
-
+# create the db connection
 def create_db_connection(db_name):
     try:
         db = sqlite3.connect(db_name)
@@ -399,6 +412,8 @@ def create_db_connection(db_name):
         logging.error("Exception occurred in create_db_connection", exc_info=True)
     return None
 
+
+# close the db connection
 def close_db_connection(db_name):
     try:
         db.close()
@@ -408,6 +423,8 @@ def close_db_connection(db_name):
         logging.error("Exception occurred in closed_db_connection", exc_info=True)
     return None
 
+
+# read all jobs
 def read_all_jobs(db):
 	try:
 		s = startTimer()
@@ -425,6 +442,7 @@ def read_all_jobs(db):
 		return	df_jobs
 	return None
 
+# read all tasks
 def read_all_tasks(db):
 	try:
 		s = startTimer()
@@ -449,6 +467,7 @@ def read_all_tasks(db):
 
 	return None
 
+# read all tasksets
 def read_all_tasksets(db):
 	try:
 		s = startTimer()
@@ -467,6 +486,7 @@ def read_all_tasksets(db):
 
 	return None
 
+# read all the tables and concatinating them for producing final dataset
 def read_all_data(db):
 	try:
 		s = startTimer()
@@ -490,6 +510,7 @@ def read_all_data(db):
 
 	return None
 
+# generated dataset can also be saved if required.
 def save_tasksets_data(df_tasksets, FileName):
     try:
         logging.info("-----------------saving data-----------------------")
@@ -504,9 +525,7 @@ def save_tasksets_data(df_tasksets, FileName):
 
 #Data processing Functions
 def process_tasksets_Data(df_TaskSet):
-
 	# tranform data values from categorical notation to numeric values
-
 	# df_TaskSet = df_TaskSet.round({'AvgT1': 0, 'AvgT2': 0, 'AvgT3': 0})
 	df_TaskSet = df_TaskSet.fillna(0.0)
 	# //process arg and PKG value time for task1
@@ -526,6 +545,7 @@ def process_tasksets_Data(df_TaskSet):
 
 	return df_TaskSet
 
+# processing the generated dataset file
 def process_db_file(df_tasksets, datasetDirectory_path):
 	try:
 		logging.info("Load_data")
@@ -569,7 +589,7 @@ def process_db_file(df_tasksets, datasetDirectory_path):
 
 	return None
 
-
+# saving the feature and label array after dataset is being processed
 def save_feature_label_set(directory_path, df_FeatureSet, df_LabelSet):
 	try:
 		logging.info("Save data- as csv/pkl format")
@@ -629,7 +649,7 @@ if __name__ == "__main__":
 		# db name and driectory
 		selected_db = dbnamer3
 		datasetDirectory_path = datasetDirectory_path_r3
-		# db queries
+		# r3 db queries
 		sql_job_table = sql_job_table_R3
 		sql_select_job_table = sql_select_job_table_R3
 		sql_task1_table = sql_task1_table_R3
@@ -643,7 +663,7 @@ if __name__ == "__main__":
 		# db name and driectory
 		selected_db = dbnamev6
 		datasetDirectory_path = datasetDirectory_path_pv6
-		# db queries
+		# pv6 db queries
 		sql_job_table = sql_job_table_PV6
 		sql_select_job_table = sql_select_job_table_PV6
 		sql_task1_table = sql_task1_table_PV6

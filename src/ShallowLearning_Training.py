@@ -29,6 +29,7 @@ import seaborn as sns
 
 path = '../'
 
+# name of all the directory wher the feature set is contained
 DataSetV3 = 'Datasets/FinalDatasetV3/'
 DataSetV5 = 'Datasets/FinalDatasetV5/'
 DataSetV6 = 'Datasets/FinalDatasetV6/'
@@ -36,9 +37,11 @@ DataSetBothV6 = 'Datasets/FinalDatasetBothV6/'
 DataSetR3 = 'Datasets/FinalDatasetR3/'
 TestDataset = 'Datasets/TestDataset/'
 
+# helping function for calculating the execution time of each task
 def startTimer():
 	return time.time()
 
+# helping function for calculating the execution time of each task
 def endTimer(message,sTime):
 	print(message+" execution time")
 	print("--- %s seconds ---" % (time.time() - sTime))
@@ -89,7 +92,7 @@ def graph_plotting_functions(xTrain, yTrain):
 
 	return None
 
-
+# load the dataset from the datasets data
 def load_dataset(DataSetPath):
 	try:
 		logging.info("Load_data")
@@ -110,7 +113,7 @@ def load_dataset(DataSetPath):
 
 	return None
 
-
+# split the dataset into test and train
 def split_dataset(x, y):
 	try:
 		logging.info("splitting dataset via sklearn train_test_split function")
@@ -124,6 +127,7 @@ def split_dataset(x, y):
 
 	return None
 
+# train a single model
 def run_model(SL_algo):
 	try:
 		s = startTimer()
@@ -165,10 +169,9 @@ def run_model(SL_algo):
 # hyper parameter optimization Call
 # SL_algo.graph()
 # SL_algo.hyperparameter_optimization_search()
-# SL_algo.train_mode2l()
-# SL_algo.train_model()
 # SL_algo.training_model_n_feature_importance()
 
+# function to run hyper parameter search, it calls the shallow learning class function
 def run_bestModel_search(SL_algo):
 	try:
 		s = startTimer()
@@ -180,7 +183,7 @@ def run_bestModel_search(SL_algo):
 		logging.error("Exception occurred in run_bestModel_search", exc_info=True)
 		raise e
 
-
+# function to display all the best models
 def display_trainedModel_results(SL_algo):
 	try:
 		s = startTimer()
@@ -192,7 +195,7 @@ def display_trainedModel_results(SL_algo):
 		raise e
 
 
-# Command line interface functions
+# Command line interface functions for selecting the database for training
 def select_dataset():
 	print('==============================================================================')
 	print('-------------------------  Select the dataset  -------------------------------')
@@ -211,6 +214,9 @@ def select_dataset():
 	return TestDataset
 
 
+
+
+# command line function for selecting shallow learning algorithm - returns the variable for shallow learning class
 def select_shallowLearning_algorithm(log_BestModel_1, xTrain, yTrain, xTest, yTest, df_feature_names, df_target_names, dataset_name):
 	print('\n\n==========================================================================')
 	print('-------------------------  Select the Shallow learning algorithm  ------------')
@@ -223,6 +229,8 @@ def select_shallowLearning_algorithm(log_BestModel_1, xTrain, yTrain, xTest, yTe
 	print("type '5' for Decision Tree")
 
 	db_option = input("Enter input: ")
+
+	# one of the shallow learning algorithm variable is created and returned.
 	if(db_option == '1'):
 		return Ranfor_class(log_BestModel_1, xTrain, yTrain, xTest, yTest, df_feature_names, df_target_names,dataset_name)
 	elif(db_option == '2'):
@@ -234,10 +242,11 @@ def select_shallowLearning_algorithm(log_BestModel_1, xTrain, yTrain, xTest, yTe
 	elif(db_option == '5'):
 		return DecTree_class(log_BestModel_1, xTrain, yTrain, xTest, yTest, df_feature_names, df_target_names, dataset_name)
 
+	# by default random class is always returned.
 	return Ranfor_class(log_BestModel_1, xTrain, yTrain, xTest, yTest, df_feature_names, df_target_names,dataset_name)
 
 
-
+# command line function for selecting the training type
 def select_type_of_training():
 	print('\n\n==========================================================================')
 	print('-------------------------  Select Training Type ------------------------------')

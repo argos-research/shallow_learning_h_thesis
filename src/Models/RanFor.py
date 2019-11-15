@@ -28,6 +28,19 @@ max_features = ["auto", "sqrt", "log2"]
 bootstrap = [False, True]
 path = '../'
 
+# 'n_estimators': [150, 250, 350, 500],
+# 'criterion': ['gini', 'entropy'],
+# 'max_depth': [10, 20, None],
+# 'max_features': ['auto', 'sqrt'],
+# 'bootstrap': [True, False],
+# 'min_samples_leaf': [3, 6],
+# 'min_samples_split': [2, 4]
+# 'max_depth': [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, None],
+# 'max_features': ['auto', 'sqrt'],
+# 'min_samples_leaf': [3, 6, 9],
+# 'min_samples_split': [2, 4, 8, 16],
+# 'n_estimators': [150, 250, 350, 500, 750, 1000, 1250, 1500, 2000],
+# 'criterion': ['gini']
 
 def setup_logger(name, log_file, level=logging.INFO):
 	formatter = logging.Formatter('%(asctime)s [%(filename)s: %(funcName)s - %(lineno)d] - %(message)s', datefmt='%d-%b-%y %H:%M:%S)')
@@ -41,13 +54,15 @@ def setup_logger(name, log_file, level=logging.INFO):
 
 # Random Forest
 class Ranfor_class:
+	# parameters of single model
 	n_estimators = None
 	criterion = None
 	max_depth = None
 	max_features = None
 	bootstrap = None
+	# single model reference
 	model = None
-
+	# train and test set
 	X_data = None
 	y_data = None
 	Xtest_data = None
@@ -55,50 +70,82 @@ class Ranfor_class:
 	feature_names = None
 	target_names = None
 
+	# acuracy scored and optimized predicted values
 	accuracy_score = None
+	# Single model training parameter
 	y_predicted = None
+	# hyper parameter optimized model
 	optimized_y_predicted = None
 
+	# custom and default logger reference
 	log_BestModel_1 = None
 	logger = None
 	dataset_name_path = None
 
-
+	# hyper parameter optimization array - experimented values
+	# values were broken down into smaller parameter candidates because
+	# otherwise it gives excessive memory usage error for larger dataset
 	parameter_sets= [
+		# here criterion='gini' because default for criterion is ”gini”
 		{
 			'n_estimators': [100],
 			'max_depth': [25],
 			'min_samples_split': [8],
 			'min_samples_leaf': [5]
 		},
+		# here criterion='gini' because default for criterion is ”gini”
+		# here cbootstrap': [True], because default for bootstrap is ”True”
 		{
 			'n_estimators': [100, 300, 500, 800, 1200],
 			'max_depth': [5, 8, 15, 25, 30],
 			'min_samples_split': [2, 5, 8, 50],
 			'min_samples_leaf': [1, 5, 9]
 		},
+		# here criterion='gini' because default for criterion is ”gini”
 		{   'bootstrap': [False],
 			'n_estimators': [4, 16, 64, 800, 1200],
 			'max_depth': [ 70, 85, 100, None],
 			'min_samples_leaf': [3, 6, 9],
 			'min_samples_split': [10, 15, 100]
 		},
-
-		{	'criterion': ['entropy'],
-			'n_estimators': [100, 500, 1200],
-			'max_depth': [5, 15, 25, 30],
-			'min_samples_split': [2, 8, 50],
-			'min_samples_leaf': [1, 5, 9],
+		# here criterion='gini' because default for criterion is ”gini”
+		{'criterion': ['entropy'],
+		 'bootstrap': [False],
+		 'n_estimators': [4, 16, 64, 800, 1200],
+		 'max_depth': [70, 85, 100, None],
+		 'min_samples_leaf': [3, 6, 9],
+		 'min_samples_split': [10, 15, 100]
+		 },
+		# here bootstrap': [True], because default for bootstrap is ”True”
+		{'criterion': ['entropy'],
+		'n_estimators': [100, 500, 1200],
+		'max_depth': [5, 15, 25, 30],
+		'min_samples_split': [2, 8, 50],
+		'min_samples_leaf': [1, 5, 9],
 		},
-		{	 'criterion': ['entropy'],
-			 'bootstrap': [False],
-			 'n_estimators': [4, 64, 750, 1000],
-			 'max_depth': [70, 90, 100],
-			 'min_samples_split': [10, 15, 100],
-			 'min_samples_leaf': [3, 6, 9],
-		 }
+		{'criterion': ['entropy'],
+		'n_estimators': [4, 64, 750, 1000],
+		'max_depth': [70, 90, 100],
+		'min_samples_split': [10, 15, 100],
+		'min_samples_leaf': [3, 6, 9],
+		},
+		# here bootstrap': [false], because default for bootstrap is ”True”
+		{'criterion': ['entropy'],
+		'n_estimators': [100, 500, 1200],
+		'bootstrap': [False],
+		'max_depth': [5, 15, 25, 30],
+		'min_samples_split': [2, 8, 50],
+		'min_samples_leaf': [1, 5, 9],
+		},
+		{'criterion': ['entropy'],
+		'bootstrap': [False],
+		'n_estimators': [4, 64, 750, 1000],
+		'max_depth': [70, 90, 100],
+		'min_samples_split': [10, 15, 100],
+		'min_samples_leaf': [3, 6, 9],
+		}
 	]
-
+	# constructor - initializes all parameters, logger, dataset. model parameters
 	def __init__(self, Log_BestModel, inX_data, iny_data, inXtest_data, inytest_data, infeature_name, intarget_name, dataset_name_path, in_estimators=100, in_criterion='gini', in_max_depth=None, in_max_features='auto', in_bootstrap=True):
 		try:
 			logger = setup_logger('RanForTraining', path + 'Logging/RanForTraining.log')
@@ -142,13 +189,14 @@ class Ranfor_class:
 
 	def train_model(self):
 		try:
+			# Train single model
 			self.model.fit(self.X_data, self.y_data)
 		except Exception as e:
 			raise e
 		print("------------------------------ Model trained  ------------------------")
 
 
-
+	# helpin function for generating the confusion matrix graph
 	def confusion_matrix_graph(self):
 		try:
 
@@ -197,8 +245,10 @@ class Ranfor_class:
 
 
 
+	# helping function for generating feature importance
 	def training_model_n_feature_importance(self):
 		try:
+			# values are saved in text file
 			f = open("../Evaluation/RandForFeatureImportance.txt", "a+")
 
 			now = datetime.datetime.now()
@@ -255,6 +305,7 @@ class Ranfor_class:
 
 	def predict(self):
 		try:
+			# Predict score of single model
 			self.y_predicted = self.model.predict(self.Xtest_data)
 		except Exception as e:
 			self.logger.error("Exception occurred in predict", exc_info=True)
@@ -264,6 +315,7 @@ class Ranfor_class:
 
 	def calculate_accuracy_score(self):
 		try:
+			# calculate accuracy score
 			print("------------------------------ Accuracy score of model -----------------------")
 			self.accuracy_score = metrics.accuracy_score(self.ytest_data, self.y_predicted)
 			print(self.accuracy_score)
@@ -274,6 +326,7 @@ class Ranfor_class:
 
 	def classification_report(self):
 		try:
+			# classification_report - contains f1, support recall values etc.
 			print("----------------------------- classification report --------------------------")
 			print(metrics.classification_report(self.ytest_data, self.y_predicted, target_names=self.target_names))
 
@@ -284,6 +337,7 @@ class Ranfor_class:
 
 	def confusion_matrix(self):
 		try:
+			# confusion matrix
 			print("------------------------------ confusion matrix ------------------------------")
 			print(metrics.confusion_matrix(self.ytest_data, self.y_predicted))
 			self.logger.info('confusion matrix')
@@ -291,6 +345,7 @@ class Ranfor_class:
 			self.logger.error("Exception occurred in confusion_matrix", exc_info=True)
 			raise e
 
+	# displaying list of all the best models. saved models from custom file
 	def display_all_bestModel(self):
 		print("------------------------------ display all bestModel -------------------------")
 		try:
@@ -318,6 +373,11 @@ class Ranfor_class:
 
 		return None
 
+	# hyper parameter optimzation gridSearch -true- if want to use grid search otherwise random search is used.
+	# number of iteration represents the no. of total model trained in random search
+	# in_cv represents the different type k-fold classs.
+	# in_number_jobs represenets the no of paraletl job
+	# verbosity define the no. of output you want tp recieve on console during training.
 	def hyperparameter_optimization_search(self,gridSearch=False, in_iter = 20, in_random_state = 77, in_cv=5, in_num_jobs=-1, in_verbosity=200):
 		try:
 
@@ -327,6 +387,7 @@ class Ranfor_class:
 			else:
 				self.logger.info('------------------------- Random-Search ------------------------')
 
+			# hyper parameter array is accessed and iterated over.
 			for hyperparameters in self.parameter_sets:
 
 				i += 1
@@ -346,23 +407,25 @@ class Ranfor_class:
 				print(hyperparameters)
 				start = time.time()
 				optimized_model = None
-				if (gridSearch):
+				if (gridSearch): # model is initialized here
 					optimized_model = GridSearchCV(self.model, hyperparameters, cv=in_cv, n_jobs=in_num_jobs,
 											   verbose=in_verbosity)
 				else:
 					optimized_model = RandomizedSearchCV(estimator=self.model, param_distributions=hyperparameters, n_iter=in_iter,
 											 cv=in_cv,
 											 verbose=in_verbosity, random_state=in_random_state, n_jobs=in_num_jobs)
-
+				# model is trained
 				optimized_model.fit(self.X_data, self.y_data)
 
-
+				# accuracy score of model is predictred
 				self.optimized_y_predicted = optimized_model.predict(self.Xtest_data)
 
 				end = time.time()
 				running_time = end - start
 				print("Total optimization time in s:", str(running_time))
 
+				# trained model is saved in custom and defauot logging files
+				# and different evaluation measures are also presented
 				self.process_trained_model_information(optimized_model,running_time)
 
 				print("*********----------------- hyperparameter optimization end  ---------------*********")
@@ -375,6 +438,7 @@ class Ranfor_class:
 
 
 
+	# saving the optimized model accuracy and other scores for evaluation later
 	def process_trained_model_information(self, optimized_model, running_time):
 
 		try:
@@ -399,7 +463,7 @@ class Ranfor_class:
 				print()
 
 				optimized_accuracy_score = metrics.accuracy_score(self.ytest_data, self.optimized_y_predicted)
-
+				# get the best results
 				est = optimized_model.best_estimator_.get_params()["n_estimators"]
 				cri = optimized_model.best_estimator_.get_params()['criterion']
 				dept = optimized_model.best_estimator_.get_params()['max_depth']
@@ -482,6 +546,7 @@ class Ranfor_class:
 
 		return None
 
+	# calculated for hyperparameter optimization
 	def calculate_score_and_report(self, Best_Model):
 
 		self.logger.info("---------------- Grid_scores_on_development_set ----------------")
@@ -493,7 +558,7 @@ class Ranfor_class:
 		stds = Best_Model.cv_results_['std_test_score']
 		self.logger.info(means)
 		self.logger.info(stds)
-
+		# print score for each intermediary model
 		for mean, std, params in zip(means, stds, Best_Model.cv_results_['params']):
 			print("%0.3f (+/-%0.03f) for %r"
 				  % (mean, std * 2, params))
@@ -513,6 +578,7 @@ class Ranfor_class:
 		self.logger.info("The scores are computed on the full evaluation set.")
 		self.logger.info(" ")
 
+		#  calculated the confusion matrix score below
 		# y_true, y_pred = self.ytest_data, Best_Model.predict(self.Xtest_data)
 		print(metrics.classification_report(self.ytest_data, self.optimized_y_predicted))
 		self.logger.info(metrics.classification_report(self.ytest_data, self.optimized_y_predicted))
