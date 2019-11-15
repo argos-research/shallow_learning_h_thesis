@@ -125,4 +125,4 @@ Note: For raspberry_pi_3 and panda_v6both dataset,directories as well as dbname 
   
   * Then training is automatically started  once training is finished results can be viewed on console as well as inside the logging files. For hyper paprameter custom and default both logging file should be viewd for complete overview of training process and results generated in the end. For single model training, everything is displayed on the console. 
 
- Note: In order to extend the script for adding new classifier further details can be viewed inside the thesis document under Chapter Implementation, in section 7.6.  
+ Note: In order to extend the script for adding new classifier further details can be viewed inside the thesis document under Chapter Implementation, in section 7.6.   
