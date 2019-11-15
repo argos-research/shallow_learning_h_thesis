@@ -308,6 +308,7 @@ if __name__ == "__main__":
 	logging.info('main_program start')
 
 	try:
+		#starting the shallow learning model building
 		main_program()
 	except Exception as e:
 		logging.info('Error in main program execution')
