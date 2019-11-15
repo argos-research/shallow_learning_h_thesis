@@ -17,6 +17,7 @@ def setup_logger(name, log_file, level=logging.INFO):
 	return logger
 
 
+# Custom logging class - contains read and save function for each classifier
 # Saving model
 class Log_BestModel:
 
